@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Http } from '@angular/http';
+import { ApiKeyService } from '../apikey.service';
 
 @Component({
   selector: 'app-search',
@@ -6,8 +8,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit {
+  wolframResults = <any>{}
+  constructor(
 
-  constructor() { }
+  	private http: Http,
+  	private apiKeyService: ApiKeyService
+  ) { }
 
   ngOnInit() {
   }

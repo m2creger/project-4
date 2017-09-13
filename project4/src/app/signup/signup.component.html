@@ -1,3 +1,23 @@
-<p>
-  signup works!
-</p>
+<div class="container">
+	<div class="row signupPage">
+		<div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+			<form (ngSubmit)="onSignup(newUser)">
+				<div class="form-group">
+					<label for="email">Email</label>
+					<input type="email" id="email" name="email" placeholder="Enter an email" [(ngModel)]="newUser.email"
+					class="form-control">
+				</div>
+				<div class="form-group">
+					<label for="password">Password</label>
+					<input type="password" id="password" name="password" placeholder="Enter a password" [(ngModel)]="newUser.password" class="form-control"
+					[minlength]="6">
+					<p> *Password must be at least 6 characters</p>
+				</div>
+				<button class="btn btn-success" type="submit">Signup</button>
+				<div class="alert-danger firebaseError" *ngIf="firebaseErrorMessage">
+					{{ firebaseErrorMessage }}
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

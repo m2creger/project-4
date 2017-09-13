@@ -1,3 +1,43 @@
-<p>
-  header works!
-</p>
+<nav class="navbar navbar-inverse bg-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a href="#" class="navbar-brand">Forge</a>
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+
+      	<span class="icon-bar"></span>
+      	<span class="icon-bar"></span>
+      	<span class="icon-bar"></span>
+
+    	</button>
+    </div>
+
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <ng-template [ngIf]="authService.isAuthenticated()">
+          <li routerLinkActive="active"><a routerLink="/home">Home</a>
+          </li>
+		  <li>
+			<a routerLink="/bids">Bids</a>
+		  </li>
+		  <li>
+			<a routerLink="/projects">Projects</a>
+		  </li>
+        </ng-template>
+      </ul>
+      <form class="navbar-form navbar-right" role="search" (ngSubmit)="searchForTerm(form)" #form="ngForm">
+        <div class="form-group">
+          <input type="text" ngModel class="form-control" placeholder="Search" name="searchTerm">
+        </div>
+        <button type="submit" class="btn btn-default" >Submit</button>
+      </form>
+      <ul class="nav navbar-nav navbar-right">
+        <ng-template [ngIf]="authService.isAuthenticated()">
+          <li><a routerLink="/signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+          <li><a routerLink="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        </ng-template>
+        <li><a style="cursor: pointer;" (click)="onLogout()" *ngIf="authService.isAuthenticated()">Logout</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
