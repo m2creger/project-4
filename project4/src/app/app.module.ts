@@ -6,8 +6,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Observable } from 'rxjs';
 
-//import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-//import { MdButtonModule, MdTabsModule } from '@angular/material';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MdButtonModule, MdTabsModule } from '@angular/material';
+import { ModalModule } from 'ng2-modal';
+import { PopoverModule } from 'ng2-popover';
 
 // Services
 import { FirebaseService } from './firebase.service';
@@ -20,7 +22,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { BidsRoutingModule } from './bids/bids-routing.module';
 
 // Routing
-
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -57,7 +58,13 @@ import { BidIndexComponent } from './bid-index/bid-index.component';
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
-    BidsRoutingModule
+    BidsRoutingModule,
+    BrowserAnimationsModule,
+    MdButtonModule, 
+    MdTabsModule,
+    ModalModule,
+    PopoverModule
+
   ],
   providers: [
     FirebaseService,

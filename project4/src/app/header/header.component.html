@@ -29,7 +29,7 @@
         <div class="form-group">
           <input type="text" ngModel class="form-control" placeholder="Search" name="searchTerm">
         </div>
-        <button type="submit" class="btn btn-default" >Submit</button>
+        <button type="submit" class="btn btn-default" [popover]="myPopover">Submit</button>
       </form>
       <ul class="nav navbar-nav navbar-right">
         <ng-template [ngIf]="!authService.isAuthenticated()">
@@ -43,7 +43,7 @@
   </div>
 </nav>
 
-<!-- Search box popover
+
 <div class="container">
   <div>
       <popover-content #myPopover
@@ -76,7 +76,7 @@
       </popover-content>
 </div>
 
-
+<!--
 <modal  title="Modal title"
         cancelButtonLabel="cancel"
         submitButtonLabel="submit"
@@ -101,4 +101,5 @@
     </modal-footer>
         
 </modal>
+
 -->
