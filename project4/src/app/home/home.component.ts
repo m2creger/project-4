@@ -6,10 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  photoBids: string;
+  photoProjects: string;
 
   constructor() { }
 
   ngOnInit() {
+  	this.photoBids = '/assets/images/pexels-photo-259966.jpeg';
+  	this.photoProjects = '/assets/images/pexels-photo-443383.jpeg';
   }
 
 }

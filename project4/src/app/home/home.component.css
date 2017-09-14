@@ -1,0 +1,12 @@
+#bidLink {
+	background-image: url("/assets/images/pexels-photo-209272.jpeg");
+	height: 300px;
+}
+
+#projectLink {
+	background-image: url("/assets/images/pexels-photo-259966.jpeg");
+	height: 300px;
+}
+#mainSection {
+	background: linear-gradient(black, white);
+}

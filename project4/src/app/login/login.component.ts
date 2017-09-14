@@ -48,8 +48,6 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     
-    
-  	
   }
 
   onLogin(form: NgForm) {

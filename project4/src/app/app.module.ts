@@ -5,12 +5,24 @@ import { HttpModule } from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Observable } from 'rxjs';
-import { AppRoutingModule } from './app-routing.module';
 
+import { ModalModule } from 'ng2-modal';
+import { PopoverModule } from 'ng2-popover';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MdButtonModule, MdTabsModule } from '@angular/material';
+
+// Services
 import { FirebaseService } from './firebase.service';
 import { AuthService } from './auth.service';
 import { SearchService } from './search.service';
 import { ApiKeyService } from './apikey.service';
+
+// Components
+import { AppRoutingModule } from './app-routing.module';
+import { BidsRoutingModule } from './bids/bids-routing.module';
+
+// Routing
+
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -21,6 +33,9 @@ import { SearchComponent } from './search/search.component';
 import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
 import { LandingComponent } from './landing/landing.component';
+import { NewBidComponent } from './new-bid/new-bid.component';
+import { BidIndexComponent } from './bid-index/bid-index.component';
+
 
 @NgModule({
   declarations: [
@@ -32,7 +47,9 @@ import { LandingComponent } from './landing/landing.component';
     SearchComponent,
     HeaderComponent,
     HomeComponent,
-    LandingComponent
+    LandingComponent,
+    NewBidComponent,
+    BidIndexComponent
   ],
   imports: [
     BrowserModule.withServerTransition({appId: 'cli-universal-demo'}),
@@ -40,7 +57,13 @@ import { LandingComponent } from './landing/landing.component';
     HttpModule,
     RouterModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ModalModule,
+    PopoverModule,
+    BrowserAnimationsModule,
+    MdButtonModule,
+    MdTabsModule,
+    BidsRoutingModule
   ],
   providers: [
     FirebaseService,

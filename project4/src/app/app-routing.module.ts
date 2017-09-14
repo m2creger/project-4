@@ -4,6 +4,10 @@ import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { HomeComponent } from './home/home.component';
 import { LandingComponent } from './landing/landing.component';
+import { ProjectsComponent } from './projects/projects.component';
+import { BidsComponent } from './bids/bids.component';
+import { NewBidComponent } from './new-bid/new-bid.component';
+import { BidIndexComponent } from './bid-index/bid-index.component';
 
 const routes: Routes = [
 	{
@@ -21,7 +25,12 @@ const routes: Routes = [
 	{
 		path: 'signup',
 		component: SignupComponent
+	},
+	{
+		path: 'projects',
+		component: ProjectsComponent
 	}
+	
 ];
 
 @NgModule({

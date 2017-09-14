@@ -21,7 +21,7 @@ export class SearchService {
 		this.http.get(searchUrl)
   		.subscribe(response => { 
   			console.log(response.json());
-  			var results = response.json().queryresult
+  			var results = response.json().queryresult.pods
   			console.log(results);
   		})
 	}
