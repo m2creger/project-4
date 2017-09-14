@@ -6,10 +6,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Observable } from 'rxjs';
 
-import { ModalModule } from 'ng2-modal';
-import { PopoverModule } from 'ng2-popover';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MdButtonModule, MdTabsModule } from '@angular/material';
+//import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+//import { MdButtonModule, MdTabsModule } from '@angular/material';
 
 // Services
 import { FirebaseService } from './firebase.service';
@@ -52,17 +50,13 @@ import { BidIndexComponent } from './bid-index/bid-index.component';
     BidIndexComponent
   ],
   imports: [
-    BrowserModule.withServerTransition({appId: 'cli-universal-demo'}),
+    //BrowserModule.withServerTransition({appId: 'cli-universal-demo'}),
+    BrowserModule,
     AppRoutingModule,
     HttpModule,
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
-    ModalModule,
-    PopoverModule,
-    BrowserAnimationsModule,
-    MdButtonModule,
-    MdTabsModule,
     BidsRoutingModule
   ],
   providers: [

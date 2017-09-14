@@ -1,3 +1,27 @@
-<p>
-  new-bid works!
-</p>
+<div class="container">
+	<div class="row">
+		<form (ngSubmit)="createNewProject(newBid)">
+			<div class="form-group">
+				<label for="newBidName"> New Bid Name</label>
+				<input 
+					name="newBidName"
+					
+					[(ngModel)]="newBid.newBidName"
+					class="form-control"
+					placeholder="Enter a bid name"
+				/>
+			</div>
+			<div class="form-group">
+				<label for="location"> New Bid Location</label>
+				<input 
+					name="newBidLocation"
+					
+					[(ngModel)]="newBid.newBidLocation"
+					class="form-control"
+					placeholder="Bid Location"
+				/>
+			</div>
+			<button class="btn btn-success" type="submit">Start bid</button>
+		</form>
+	</div>
+</div>

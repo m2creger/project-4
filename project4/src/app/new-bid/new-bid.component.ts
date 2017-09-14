@@ -6,10 +6,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./new-bid.component.css']
 })
 export class NewBidComponent implements OnInit {
+  
+  newBid = <any>{};
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  createNewProject(newBid) {
+  	var newBidName = newBid.newBidName;
+  	var newBidLocation = newBid.newBidLocation;
+  	console.log(newBidName);
+  	console.log(newBidLocation);
   }
 
 }
