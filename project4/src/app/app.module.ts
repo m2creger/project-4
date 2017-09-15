@@ -16,6 +16,7 @@ import { FirebaseService } from './firebase.service';
 import { AuthService } from './auth.service';
 import { SearchService } from './search.service';
 import { ApiKeyService } from './apikey.service';
+import { BidService } from './bids.service';
 
 // Components
 import { AppRoutingModule } from './app-routing.module';
@@ -70,7 +71,8 @@ import { BidIndexComponent } from './bid-index/bid-index.component';
     FirebaseService,
     AuthService,
     ApiKeyService,
-    SearchService
+    SearchService,
+    BidService
   ],
   bootstrap: [AppComponent]
 })

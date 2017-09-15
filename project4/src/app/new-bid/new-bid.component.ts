@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BidService } from '../bids.service';
 
 @Component({
   selector: 'app-new-bid',
@@ -9,7 +10,7 @@ export class NewBidComponent implements OnInit {
   
   newBid = <any>{};
 
-  constructor() { }
+  constructor(private bidService: BidService) { }
 
   ngOnInit() {
   }
@@ -19,6 +20,11 @@ export class NewBidComponent implements OnInit {
   	var newBidLocation = newBid.newBidLocation;
   	console.log(newBidName);
   	console.log(newBidLocation);
+    this.newBid = {
+      newBidName: newBidName,
+      newBidLocation: newBidLocation
+    }
+    this.bidService.addBids(newBid);
   }
 
 }
