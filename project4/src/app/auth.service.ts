@@ -4,7 +4,9 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Subject } from 'rxjs/Subject';
 import { Http } from '@angular/http';
-
+import { AngularFireAuth } from 'angularfire2/auth';
+import { FirebaseListObservable, FirebaseObjectObservable, AngularFireDatabase } from 'angularfire2/database';
+import { User } from './user.model';
 @Injectable()
 export class AuthService {
 	// that = this;
@@ -13,13 +15,16 @@ export class AuthService {
 	loggedInUser = new Subject();
 	firebaseLoginError = 'Invalid email or password';
 	firebaseSignupError = 'Invalid email or password. Password must be at least 6 digits in length';
-	
+	userIsAuthenticated = false;
+
+	user: FirebaseObjectObservable<User>;
+	users: FirebaseListObservable<User[]>;
 	baseUrl = 'http://localhost:3000';
 	// Token return by firebase
 	token: string;
 
 	// User id returned by firebase
-	uid: string;
+	userId: string;
 
 	// email returned by firebase
 	email: string;
@@ -27,22 +32,28 @@ export class AuthService {
 	// Create a new user
 	newUser = <any>{};
 
+
 	constructor(
+		//private firebaseAuth: AngularFireAuth
 		private http: Http,
 		private router: Router,
+		public afAuth: AngularFireAuth,
+		db: AngularFireDatabase
 		
-	) {}
+	) {
+		this.users = db.list('/users');
+	}
 
 
 	// Sign up new user with firebase
 	signupUser(email: string, password: string) {
-		firebase.auth().createUserWithEmailAndPassword(email, password)
+		this.afAuth.auth.createUserWithEmailAndPassword(email, password)
 			.then(response => {
 
 				this.newUser = response.email;
 				console.log("The new user is " + this.newUser)
 				
-					
+				this.userIsAuthenticated = true;		
 				// Make sure user is authenticated
 				firebase.auth().currentUser.getToken()
 					.then(
@@ -53,8 +64,8 @@ export class AuthService {
 				this.router.navigate(['/home']);
 			})
 			.catch(error =>
-				//this.error = error;
-				this.returnFirebaseError(this.firebaseSignupError)
+				
+				this.returnFirebaseError(error.message)
 			);
 		
 
@@ -63,22 +74,17 @@ export class AuthService {
 	loginUser(email: string, password: string) {
 		console.log('logging in user');
 
-		firebase.auth().signInWithEmailAndPassword(email, password)
+		this.afAuth.auth.signInWithEmailAndPassword(email, password)
 			.then(
 				response => {
-					// console.log(response);
-					// console.log(response.uid);
-					this.uid = response.uid;
-					console.log(this.uid);
-					this.email = response.email;
 					
-					console.log(response.email);
-					//Get token for authorization
+					this.email = response.email;
+				
 					firebase.auth().currentUser.getToken()
 						.then(
 							(token: string) => this.token = token)
 						// Store user to database
-					
+					this.userIsAuthenticated = true;
 					//route user to homepage
 					return this.router.navigate(['/home']);
 					// return this.email;
@@ -87,24 +93,24 @@ export class AuthService {
 			.catch(error => 
 				//this.error = error;
 				//console.log(error);
-				this.returnFirebaseError(this.firebaseLoginError)
+				this.returnFirebaseError(error.message)
 
 		);
 
 
 	};
 
-	getToken() {
-		firebase.auth().currentUser.getToken()
-			.then(
-				(token: string) => this.token = token
-			);
-			// need to call data service to get user info
+	// getToken() {
+	// 	this.afAuth.auth.currentUser.getIdToken()
+	// 		.then(
+	// 			(token: string) => this.token = token
+	// 		);
+	// 		// need to call data service to get user info
 
-			console.log("calling get token");
+	// 		console.log("calling get token");
 			
-			return this.token;
-	}
+	// 		return this.token;
+	// }
 
 	returnFirebaseError(error: string) {
 		console.log("Firebase error");
@@ -117,9 +123,16 @@ export class AuthService {
 
 	// logout
 	logout() {
-		firebase.auth().signOut();
+		this.afAuth.auth.signOut();
 		this.router.navigate(['']);
 		this.token = null;
+	
+	}
+
+	createUser(user: User): void {
+		console.log("creating user");
+		console.log(user);
+		this.users.push(user);
 	}
 
 

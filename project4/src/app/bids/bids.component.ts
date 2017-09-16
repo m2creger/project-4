@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, Routes } from '@angular/router';
+import { BidService } from '../bids.service';
 @Component({
   selector: 'app-bids',
   templateUrl: './bids.component.html',
@@ -8,7 +9,10 @@ import { Router, Routes } from '@angular/router';
 export class BidsComponent implements OnInit {
   routeLinks: any[];
   activeLinkIndex = 0
-  constructor(private router: Router) {
+  constructor(
+    private router: Router,
+    private bidService: BidService
+  ) {
   	this.routeLinks = [
   		{label: 'New Bids', link: 'newbid'},
   		{label: 'All Bids', link: 'allbids'}
@@ -16,6 +20,7 @@ export class BidsComponent implements OnInit {
   }
 
   ngOnInit() {
+    //this.bidService.getBids();
   }
 
 }

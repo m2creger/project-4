@@ -43,4 +43,5 @@ yarn-error.log
 Thumbs.db
 
 apikey.service.ts
+environment.ts
 

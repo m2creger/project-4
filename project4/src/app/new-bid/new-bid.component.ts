@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BidService } from '../bids.service';
-
+import { Bid } from '../bid.model';
 @Component({
   selector: 'app-new-bid',
   templateUrl: './new-bid.component.html',
@@ -9,7 +9,7 @@ import { BidService } from '../bids.service';
 export class NewBidComponent implements OnInit {
   
   newBid = <any>{};
-
+  //bid: Bid = new Bid();
   constructor(private bidService: BidService) { }
 
   ngOnInit() {
@@ -24,7 +24,7 @@ export class NewBidComponent implements OnInit {
       newBidName: newBidName,
       newBidLocation: newBidLocation
     }
-    this.bidService.addBids(newBid);
+    this.bidService.createBid(newBid);
   }
 
 }

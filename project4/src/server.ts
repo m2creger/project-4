@@ -2,7 +2,7 @@ import 'reflect-metadata';
 import 'zone.js/dist/zone-node';
 import { platformServer, renderModuleFactory } from '@angular/platform-server'
 import { enableProdMode } from '@angular/core';
-import { AppServerModuleNgFactory } from '../dist/ngfactory/src/app/server.module.ngfactory';
+//import { AppServerModuleNgFactory } from '../dist/ngfactory/src/app/server.module.ngfactory';
 
 import * as express from 'express';
 import * as bodyParser from 'body-parser';
@@ -25,8 +25,8 @@ let template = readFileSync(join(__dirname, '..', 'dist', 'index.html')).toStrin
 
 app.engine('html', (_, options, callback) => {
 	const opts = { document: template, url: options.req.url };
-	renderModuleFactory(AppServerModuleNgFactory, opts)
-		.then(html => callback(null, html));
+	// renderModuleFactory(AppServerModuleNgFactory, opts)
+	// 	.then(html => callback(null, html));
 });
 
 app.set('view engine', 'html');

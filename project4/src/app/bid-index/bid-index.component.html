@@ -1,3 +1,32 @@
-<p>
-  bid-index works!
-</p>
+<!--
+<div class="alert-danger"
+	*ngIf="bids.length === 0; else elseBlock">
+	{{ bidsMessage }}
+</div>
+<ng-template>
+</ng-template>
+-->
+
+<div class="row">
+	<div class="col-xs-12">
+		<a *ngFor="let bid of bids | async"
+		  class="list-group-item clearfix" >
+		  <div class="pull-left" >
+		    <h4 class="list-group-item-heading">{{bid.newBidName}}</h4>
+		    <p class="list-group-item-text">{{bid.newBidLocation}}</p>
+		
+		    <button class="delete"
+	      	(click)="deleteBid(bid.$key); $event.stopPropagation()">Delete</button>
+	  		</div>	 
+		</a>
+		<!--
+		<app-bid-item *ngFor="let bid of fakeBids; let i = index"
+		[bid]="bid"
+		[index]="i">
+		</app-bid-item>
+		
+		{{ (bid | async)?.BidName}}
+		-->
+	</div>
+</div>
+

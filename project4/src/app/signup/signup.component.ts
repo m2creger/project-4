@@ -37,11 +37,11 @@ export class SignupComponent implements OnInit {
       private router: Router,
       private apiKeyService: ApiKeyService
    ) {
-      this.subscription = this.firebaseService.startFirebase().subscribe(
-         message => {
-           this.message = message;
-       });
-      authService.firebaseAnnounced$.subscribe(
+      // this.subscription = this.firebaseService.startFirebase().subscribe(
+      //    message => {
+      //      this.message = message;
+      //  });
+      this.authService.firebaseAnnounced$.subscribe(
          error => {
            this.firebaseErrorMessage = error
          }
@@ -59,7 +59,8 @@ export class SignupComponent implements OnInit {
   	const password = newUser.password;
     console.log(email);
     console.log(password);
-    this.authService.signupUser(email, password)
+    this.authService.signupUser(email, password);
+    this.authService.createUser(newUser);
  
   }
 

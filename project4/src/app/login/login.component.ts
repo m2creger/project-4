@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { AuthService } from '../auth.service';
 
+
 import { Router } from '@angular/router';
 import * as firebase from 'firebase';
 import { ApiKeyService } from '../apikey.service';
@@ -30,15 +31,16 @@ export class LoginComponent implements OnInit {
   email: string;
 
   constructor(
+            
               private firebaseService: FirebaseService,
               private authService: AuthService,
               private apiKeyService: ApiKeyService,
               private router: Router) { 
-     this.subscription = this.firebaseService.startFirebase().subscribe(
-         message => {
-           this.message = message;
-     });
-     authService.firebaseAnnounced$.subscribe(
+     // this.subscription = this.firebaseService.startFirebase().subscribe(
+     //     message => {
+     //       this.message = message;
+     // });
+     this.authService.firebaseAnnounced$.subscribe(
          error => {
            this.firebaseErrorMessage = error
          }

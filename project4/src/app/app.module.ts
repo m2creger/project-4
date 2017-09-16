@@ -11,6 +11,12 @@ import { MdButtonModule, MdTabsModule } from '@angular/material';
 import { ModalModule } from 'ng2-modal';
 import { PopoverModule } from 'ng2-popover';
 
+//import { AngularFireDatabaseModule } from 'angularfire2/database';
+
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+
 // Services
 import { FirebaseService } from './firebase.service';
 import { AuthService } from './auth.service';
@@ -35,7 +41,8 @@ import { HomeComponent } from './home/home.component';
 import { LandingComponent } from './landing/landing.component';
 import { NewBidComponent } from './new-bid/new-bid.component';
 import { BidIndexComponent } from './bid-index/bid-index.component';
-
+import { BidItemComponent } from './bid-item/bid-item.component';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -49,7 +56,8 @@ import { BidIndexComponent } from './bid-index/bid-index.component';
     HomeComponent,
     LandingComponent,
     NewBidComponent,
-    BidIndexComponent
+    BidIndexComponent,
+    BidItemComponent
   ],
   imports: [
     //BrowserModule.withServerTransition({appId: 'cli-universal-demo'}),
@@ -64,7 +72,11 @@ import { BidIndexComponent } from './bid-index/bid-index.component';
     MdButtonModule, 
     MdTabsModule,
     ModalModule,
-    PopoverModule
+    PopoverModule,
+    //AngularFireDatabaseModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule,
+    AngularFireDatabaseModule,
 
   ],
   providers: [
