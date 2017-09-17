@@ -32,6 +32,14 @@ export class BidIndexComponent implements OnInit {
     })
   }
 
+  deleteBid(key: string) {
+    this.bids.remove(key);
+  }
+
+  editBid(key: string) {
+    
+  }
+
 
   ngOnInit() {
     this.bids = this.db.list(`bids/${this.userId}`);

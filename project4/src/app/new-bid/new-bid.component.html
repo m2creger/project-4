@@ -1,6 +1,10 @@
 <div class="container">
 	<div class="row">
 		<form (ngSubmit)="createNewProject(newBid)">
+			<button class="btn btn-success" type="submit" (click)="createLaborInput(); $event.preventDefault()">Add Labor Hours</button>
+			<button class="btn btn-success" type="submit" (click)="createMaterialInput(); $event.preventDefault()">Add Material</button>
+			<button class="btn btn-success" type="submit" (click)="createEquipmentInput();$event.preventDefault()">Add Equipment Expense</button>
+			
 			<div class="form-group">
 				<label for="newBidName"> New Bid Name</label>
 				<input 
@@ -23,5 +27,13 @@
 			</div>
 			<button class="btn btn-success" type="submit">Start bid</button>
 		</form>
+		
+	</div>
+</div>
+<div class="container">
+	<div class="row">
+		
+		<div class="row" #bidData>
+		</div>
 	</div>
 </div>

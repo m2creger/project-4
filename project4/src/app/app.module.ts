@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core'; 
 import { RouterModule } from '@angular/router';
 import { HttpModule } from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -10,6 +10,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MdButtonModule, MdTabsModule } from '@angular/material';
 import { ModalModule } from 'ng2-modal';
 import { PopoverModule } from 'ng2-popover';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
 
 //import { AngularFireDatabaseModule } from 'angularfire2/database';
 
@@ -43,7 +44,12 @@ import { NewBidComponent } from './new-bid/new-bid.component';
 import { BidIndexComponent } from './bid-index/bid-index.component';
 import { BidItemComponent } from './bid-item/bid-item.component';
 import { environment } from '../environments/environment';
-
+import { BidEditComponent } from './bid-edit/bid-edit.component';
+import { BidCreateComponent } from './bid-create/bid-create.component';
+import { BidLaborComponent } from './bid-item/bid-labor/bid-labor.component';
+import { BidMaterialComponent } from './bid-item/bid-material/bid-material.component';
+import { BidEquipmentComponent } from './bid-item/bid-equipment/bid-equipment.component';
+import { DynamicBidComponent } from './dynamic-bid.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -57,7 +63,13 @@ import { environment } from '../environments/environment';
     LandingComponent,
     NewBidComponent,
     BidIndexComponent,
-    BidItemComponent
+    BidItemComponent,
+    BidEditComponent,
+    BidCreateComponent,
+    BidLaborComponent,
+    BidMaterialComponent,
+    BidEquipmentComponent
+
   ],
   imports: [
     //BrowserModule.withServerTransition({appId: 'cli-universal-demo'}),
@@ -77,8 +89,10 @@ import { environment } from '../environments/environment';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFireDatabaseModule,
+    MDBBootstrapModule,
 
   ],
+  schemas: [ NO_ERRORS_SCHEMA ],
   providers: [
     FirebaseService,
     AuthService,
@@ -86,6 +100,7 @@ import { environment } from '../environments/environment';
     SearchService,
     BidService
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [BidMaterialComponent, BidEquipmentComponent, BidLaborComponent]
 })
 export class AppModule { }

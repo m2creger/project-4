@@ -5,6 +5,7 @@ export class Bid {
 	public bidLocation: string;
 	public timestamp: number;
 
+
 	constructor(key: string, bidName: string, bidLocation: string, timestamp: number) {
 		this.$key = key;
 		this.bidName = bidName;

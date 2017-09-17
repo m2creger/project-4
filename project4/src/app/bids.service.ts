@@ -6,6 +6,7 @@ import { FirebaseListObservable, FirebaseObjectObservable, AngularFireDatabase }
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class BidService {
@@ -18,6 +19,7 @@ export class BidService {
 	userId: string;
 
 	constructor(
+		private router: Router,
 		private db: AngularFireDatabase,
 		private afAuth: AngularFireAuth
 	) { 
@@ -51,7 +53,7 @@ export class BidService {
 		console.log(this.userId);
 		bid.userId = this.userId;
 		this.bids.push(bid);
-		
+		this.router.navigate(['bids/createbid']);
 		// this.bids.remove(key)
 		// 	.catch(error => this.handleError(error))
 	}
