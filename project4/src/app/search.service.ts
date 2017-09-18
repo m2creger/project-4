@@ -16,6 +16,8 @@ export class SearchService {
 	noDataReturned = null;
 	subPodSearchResultImage;
 	subPodSearchResultImageArray = [];
+	wolframSearchResultsChanged = new Subject<any[]>();
+
 
 	constructor(
 		private http: Http,
@@ -44,14 +46,22 @@ export class SearchService {
 		  			console.log(this.subPodSearchResultImageArray);
 
   				}
-  				// for (var i = 0; i < this.searchResultSubPodResults.length; i++) {
-		  		// 		this.subPodSearchResultImage = this.searchResultSubPodResults[i].img.src;
-		  		// 		console.log(this.subPodSearchResultImage);
-		  		// }
+  				this.wolframSearchResultsChanged.next(this.subPodSearchResultImageArray);
+  				this.wolframConfiguredSearchResults()
+
+  			
   			}
   			
   		})
+  		
 
 
 	}
+
+	wolframConfiguredSearchResults(): Observable<any> {
+		console.log('final search results');
+		return this.wolframSearchResultsChanged.asObservable()
+	}
+
+	
 }

@@ -8,13 +8,13 @@ import { BidService } from '../bids.service';
 })
 export class BidsComponent implements OnInit {
   routeLinks: any[];
-  activeLinkIndex = 0
+  activeLinkIndex = 0;
   constructor(
     private router: Router,
     private bidService: BidService
   ) {
   	this.routeLinks = [
-  		{label: 'New Bids', link: 'newbid'},
+  		{label: 'New Bid', link: 'newbid'},
   		{label: 'All Bids', link: 'allbids'}
   	];
   }

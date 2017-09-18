@@ -26,10 +26,11 @@ import { ApiKeyService } from './apikey.service';
 import { BidService } from './bids.service';
 import { MaterialService } from './material.service';
 import { LaborService } from './labor.service';
+import { ProjectService } from './projects.service';
 // Components
 import { AppRoutingModule } from './app-routing.module';
 import { BidsRoutingModule } from './bids/bids-routing.module';
-
+import { ProjectRoutingModule } from './projects/project-routing.module';
 // Routing
 
 import { AppComponent } from './app.component';
@@ -51,6 +52,9 @@ import { BidLaborComponent } from './bid-item/bid-labor/bid-labor.component';
 import { BidMaterialComponent } from './bid-item/bid-material/bid-material.component';
 import { BidEquipmentComponent } from './bid-item/bid-equipment/bid-equipment.component';
 import { DynamicBidComponent } from './dynamic-bid.component';
+import { NewProjectComponent } from './projects/new-project/new-project.component';
+import { ProjectEditComponent } from './projects/project-edit/project-edit.component';
+import { ProjectIndexComponent } from './projects/project-index/project-index.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -69,7 +73,10 @@ import { DynamicBidComponent } from './dynamic-bid.component';
     BidCreateComponent,
     BidLaborComponent,
     BidMaterialComponent,
-    BidEquipmentComponent
+    BidEquipmentComponent,
+    NewProjectComponent,
+    ProjectEditComponent,
+    ProjectIndexComponent
 
   ],
   imports: [
@@ -90,6 +97,7 @@ import { DynamicBidComponent } from './dynamic-bid.component';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFireDatabaseModule,
+    ProjectRoutingModule
     //MDBBootstrapModule,
 
   ],
@@ -101,7 +109,8 @@ import { DynamicBidComponent } from './dynamic-bid.component';
     SearchService,
     BidService,
     MaterialService,
-    LaborService
+    LaborService,
+    ProjectService
   ],
   bootstrap: [AppComponent],
   entryComponents: [BidMaterialComponent, BidEquipmentComponent, BidLaborComponent]

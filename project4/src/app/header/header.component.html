@@ -43,18 +43,23 @@
   </div>
 </nav>
 
-<div class="container">
-  <div>
-      <popover-content #myPopover
-        title=""
-        placement="auto"
-         >
-        <h4>Title</h4>
-        <h4>Id</h4>
-        <h4>Img</h4>
-        
-      </popover-content>
-</div>
+
+<popover-content #myPopover
+  title=""
+  placement="auto left" 
+  [animation]="true"                          
+  [closeOnClickOutside]="true">
+  <div class="container">
+    <div class="row">
+      <ng-container *ngFor="let searchResult of searchResultsArray; let i = index">
+        <div>
+          <img [src]="searchResult.src" class="rounded float-left"/>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</popover-content>
+
 
 <!--
 <modal  title="Modal title"
