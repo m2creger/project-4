@@ -9,6 +9,14 @@ import { ApiKeyService } from './apikey.service';
 export class SearchService {
 	wolframResults = [];
 	searchResults;
+	searchResultTitle;
+	searchResultId;
+	searchResultSubPodResults;
+	builtSearchResultObject = <any>{}
+	noDataReturned = null;
+	subPodSearchResultImage;
+	subPodSearchResultImageArray = [];
+
 	constructor(
 		private http: Http,
 		private apiKeyService: ApiKeyService
@@ -21,12 +29,29 @@ export class SearchService {
 		this.http.get(searchUrl)
   		.subscribe(response => { 
   			console.log(response.json());
-  			this.searchResults = response.json().queryresult.pods
+  			this.searchResults = response.json().queryresult.pods;
   			console.log(this.searchResults);
+  			if (!this.searchResults) {
+  				console.log("No data returned");
+  			} else {
+  				for (var i = 0; i < this.searchResults.length; i++) {
+		  			this.searchResultTitle = this.searchResults[i].title;
+		  			console.log(this.searchResultTitle);
+		  			this.searchResultId = this.searchResults[i].id;
+		  			console.log(this.searchResultId);
+		  			this.searchResultSubPodResults = this.searchResults[i].subpods;
+		  			this.subPodSearchResultImageArray.push(this.searchResultSubPodResults);
+		  			console.log(this.subPodSearchResultImageArray);
+
+  				}
+  				// for (var i = 0; i < this.searchResultSubPodResults.length; i++) {
+		  		// 		this.subPodSearchResultImage = this.searchResultSubPodResults[i].img.src;
+		  		// 		console.log(this.subPodSearchResultImage);
+		  		// }
+  			}
+  			
   		})
 
-  		// for (var i = 0; i < this.searchResults.length; i++) {
-  			
-  		// }
+
 	}
 }

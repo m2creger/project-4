@@ -1,32 +1,36 @@
 <div class="container">
 	<div class="row">
-		<form (ngSubmit)="createNewProject(newBid)">
-			<button class="btn btn-success" type="submit" (click)="createLaborInput(); $event.preventDefault()">Add Labor Hours</button>
-			<button class="btn btn-success" type="submit" (click)="createMaterialInput(); $event.preventDefault()">Add Material</button>
-			<button class="btn btn-success" type="submit" (click)="createEquipmentInput();$event.preventDefault()">Add Equipment Expense</button>
-			
-			<div class="form-group">
-				<label for="newBidName"> New Bid Name</label>
-				<input 
-					name="newBidName"
-					
-					[(ngModel)]="newBid.newBidName"
-					class="form-control"
-					placeholder="Enter a bid name"
-				/>
-			</div>
-			<div class="form-group">
-				<label for="location"> New Bid Location</label>
-				<input 
-					name="newBidLocation"
-					
-					[(ngModel)]="newBid.newBidLocation"
-					class="form-control"
-					placeholder="Bid Location"
-				/>
-			</div>
-			<button class="btn btn-primary btn-lg btn-block" type="submit">Create bid</button>
-		</form>
+		<div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
+			<form (ngSubmit)="createNewProject(newBid)">
+				<button class="btn btn-success" type="submit" (click)="createLaborInput(); $event.preventDefault()">Add Labor Hours</button>
+				<button class="btn btn-success" type="submit" (click)="createMaterialInput(); $event.preventDefault()">Add Material</button>
+				<button class="btn btn-success" type="submit" (click)="createEquipmentInput();$event.preventDefault()">Add Equipment Expense</button>
+				
+				<div class="form-group">
+					<label for="newBidName"> New Bid Name</label>
+					<input 
+						name="newBidName"
+						
+						[(ngModel)]="newBid.newBidName"
+						class="form-control"
+						placeholder="Enter a bid name"
+					/>
+				</div>
+				<div class="form-group">
+					<label for="location"> New Bid Location</label>
+					<input 
+						name="newBidLocation"
+						
+						[(ngModel)]="newBid.newBidLocation"
+						class="form-control"
+						placeholder="Bid Location"
+					/>
+				</div>
+				<button class="btn btn-primary btn-lg btn-block" type="submit">Create bid</button>
+			</form>
+		</div>
+		<div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
+		</div>
 		
 	</div>
 </div>
