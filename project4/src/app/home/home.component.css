@@ -2,6 +2,7 @@
 	background-image: url("/assets/images/pexels-photo-209272.jpeg");
 	height: 300px;
 	background-size: 100%;
+	background-repeat: no-repeat;
 
 }
 
@@ -9,6 +10,7 @@
 	background-image: url("/assets/images/pexels-photo-259966.jpeg");
 	height: 300px;
 	background-size: 100%;
+	background-repeat: no-repeat;
 
 
 }

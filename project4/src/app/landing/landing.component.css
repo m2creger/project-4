@@ -4,4 +4,10 @@
     width: 100%;
     background-color: #cccccc;
 }
+.jumbotron {
+	background-image: url("/assets/images/pexels-photo-220885.jpeg");
+	background-size: cover;
+	color: white;
+	height: 600px;
+}
 

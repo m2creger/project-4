@@ -10,7 +10,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MdButtonModule, MdTabsModule } from '@angular/material';
 import { ModalModule } from 'ng2-modal';
 import { PopoverModule } from 'ng2-popover';
-import { MDBBootstrapModule } from 'angular-bootstrap-md';
+//import { MDBBootstrapModule } from 'angular-bootstrap-md';
 
 //import { AngularFireDatabaseModule } from 'angularfire2/database';
 
@@ -90,7 +90,7 @@ import { DynamicBidComponent } from './dynamic-bid.component';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFireDatabaseModule,
-    MDBBootstrapModule,
+    //MDBBootstrapModule,
 
   ],
   schemas: [ NO_ERRORS_SCHEMA ],
