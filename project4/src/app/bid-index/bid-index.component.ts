@@ -20,7 +20,7 @@ export class BidIndexComponent implements OnInit {
   bid: FirebaseObjectObservable<Bid>;
   bidsMessage = "No current bids";
   constructor(
-    private afAuth: AngularFireAuth,
+      private afAuth: AngularFireAuth,
       private db: AngularFireDatabase,
   		private bidService: BidService,
   		private route: ActivatedRoute,

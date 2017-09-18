@@ -24,7 +24,7 @@ import { AuthService } from './auth.service';
 import { SearchService } from './search.service';
 import { ApiKeyService } from './apikey.service';
 import { BidService } from './bids.service';
-
+import { MaterialService } from './material.service';
 // Components
 import { AppRoutingModule } from './app-routing.module';
 import { BidsRoutingModule } from './bids/bids-routing.module';
@@ -98,7 +98,8 @@ import { DynamicBidComponent } from './dynamic-bid.component';
     AuthService,
     ApiKeyService,
     SearchService,
-    BidService
+    BidService,
+    MaterialService
   ],
   bootstrap: [AppComponent],
   entryComponents: [BidMaterialComponent, BidEquipmentComponent, BidLaborComponent]

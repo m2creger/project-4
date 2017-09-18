@@ -7,8 +7,8 @@ import { ApiKeyService } from './apikey.service';
 @Injectable()
 
 export class SearchService {
-	wolframResults = <any>{}
-
+	wolframResults = [];
+	searchResults;
 	constructor(
 		private http: Http,
 		private apiKeyService: ApiKeyService
@@ -21,8 +21,12 @@ export class SearchService {
 		this.http.get(searchUrl)
   		.subscribe(response => { 
   			console.log(response.json());
-  			var results = response.json().queryresult.pods
-  			console.log(results);
+  			this.searchResults = response.json().queryresult.pods
+  			console.log(this.searchResults);
   		})
+
+  		// for (var i = 0; i < this.searchResults.length; i++) {
+  			
+  		// }
 	}
 }

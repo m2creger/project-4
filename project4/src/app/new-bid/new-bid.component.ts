@@ -6,6 +6,9 @@ import { BidEquipmentComponent } from '../bid-item/bid-equipment/bid-equipment.c
 import { BidLaborComponent } from '../bid-item/bid-labor/bid-labor.component';
 import { BidMaterialComponent } from '../bid-item/bid-material/bid-material.component';
 import { DynamicBidComponent } from '../dynamic-bid.component';
+import { Subscription } from 'rxjs/Subscription';
+import { MaterialService } from '../material.service';
+import { MaterialBid } from '../material.model';
 
 @Component({
   selector: 'app-new-bid',
@@ -13,30 +16,30 @@ import { DynamicBidComponent } from '../dynamic-bid.component';
   styleUrls: ['./new-bid.component.css']
 })
 export class NewBidComponent implements OnInit {
+
   @ViewChild('bidData', { read: ViewContainerRef}) target: ViewContainerRef;
+  
   private componentRef: ComponentRef<any>;
   newBid = <any>{};
+  projectMaterials: MaterialBid[];
+
   //bid: Bid = new Bid();
   @Input() value: string;
+
+
   componentData = null;
+  subscription: Subscription;
+
 
   constructor(
     private bidService: BidService,
     private router: Router,
     private componentFactoryResolver: ComponentFactoryResolver,
-    private viewContainerRef: ViewContainerRef
+    private viewContainerRef: ViewContainerRef,
+    private materialService: MaterialService
    ) { 
-
-    //const bidEquipComp = this.componentFactoryResolver.resolveComponentFactory(BidEquipmentComponent);
-    //const bidMatComp = this.componentFactoryResolver.resolveComponentFactory(BidMaterialComponent);
-    //const bidLabComp = this.componentFactoryResolver.resolveComponentFactory(BidLaborComponent);
-
-
   }
 
-  // renderComponent() {
-  //   if (this.componentRef) this.componentRef.instance.value = this.value;
-  // }
 
   ngOnInit() {
   }
@@ -46,9 +49,12 @@ export class NewBidComponent implements OnInit {
   	var newBidLocation = newBid.newBidLocation;
   	console.log(newBidName);
   	console.log(newBidLocation);
+    var materialsToBid = this.materialService.getMaterials();
+
     this.newBid = {
       newBidName: newBidName,
-      newBidLocation: newBidLocation
+      newBidLocation: newBidLocation,
+      newBidMaterials: materialsToBid
     }
     this.bidService.createBid(newBid);
   }
@@ -59,11 +65,14 @@ export class NewBidComponent implements OnInit {
   }
 
   createEquipmentInput() {
-    
+    let bidEquipmentComponent = this.componentFactoryResolver.resolveComponentFactory(BidEquipmentComponent);
+    this.componentRef = this.target.createComponent(bidEquipmentComponent);
+
   }
 
   createLaborInput() {
-    
+    let bidLaborComponent = this.componentFactoryResolver.resolveComponentFactory(BidLaborComponent);
+    this.componentRef = this.target.createComponent(bidLaborComponent);
   }
 
 }
