@@ -15,7 +15,9 @@
 		    <h4 class="list-group-item-heading">{{bid.newBidName}}</h4>
 		    <p class="list-group-item-text">{{bid.newBidLocation}}</p>
 		
-		    <button class="delete"
+		    <button class="edit btn-primary"
+	      	(click)="editBid(bid.$key); $event.stopPropagation()">Edit</button>
+	      	<button class="delete btn-danger"
 	      	(click)="deleteBid(bid.$key); $event.stopPropagation()">Delete</button>
 	  		</div>	 
 		</a>

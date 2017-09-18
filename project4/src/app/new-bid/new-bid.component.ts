@@ -9,6 +9,8 @@ import { DynamicBidComponent } from '../dynamic-bid.component';
 import { Subscription } from 'rxjs/Subscription';
 import { MaterialService } from '../material.service';
 import { MaterialBid } from '../material.model';
+import { LaborService } from '../labor.service';
+import { LaborBid } from '../labor.model';
 
 @Component({
   selector: 'app-new-bid',
@@ -22,6 +24,7 @@ export class NewBidComponent implements OnInit {
   private componentRef: ComponentRef<any>;
   newBid = <any>{};
   projectMaterials: MaterialBid[];
+  projectLabor: LaborBid[];
 
   //bid: Bid = new Bid();
   @Input() value: string;
@@ -33,6 +36,7 @@ export class NewBidComponent implements OnInit {
 
   constructor(
     private bidService: BidService,
+    private laborService: LaborService,
     private router: Router,
     private componentFactoryResolver: ComponentFactoryResolver,
     private viewContainerRef: ViewContainerRef,
@@ -49,13 +53,22 @@ export class NewBidComponent implements OnInit {
   	var newBidLocation = newBid.newBidLocation;
   	console.log(newBidName);
   	console.log(newBidLocation);
-    var materialsToBid = this.materialService.getMaterials();
 
+    // Add materials to bid
+    var materialsToBid = this.materialService.getMaterials();
+    console.log(materialsToBid);
+
+    // Add labor to bid
+    var laborToBid = this.laborService.getLabor()
+    console.log(laborToBid);
     this.newBid = {
       newBidName: newBidName,
       newBidLocation: newBidLocation,
-      newBidMaterials: materialsToBid
+      materials: materialsToBid,
+      labor: laborToBid
     }
+    console.log('creating new bid');
+    console.log(newBid);
     this.bidService.createBid(newBid);
   }
 

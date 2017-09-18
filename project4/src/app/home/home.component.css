@@ -2,6 +2,7 @@
 	background-image: url("/assets/images/pexels-photo-209272.jpeg");
 	height: 300px;
 	background-size: 100%;
+
 }
 
 #projectLink {
@@ -9,7 +10,17 @@
 	height: 300px;
 	background-size: 100%;
 
+
 }
 #mainSection {
 	background: linear-gradient(black, white);
+	
+}
+
+#bidLinkText {
+	color: white;
+}
+
+#projectLinkText {
+	color: white;
 }

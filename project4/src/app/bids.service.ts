@@ -53,7 +53,7 @@ export class BidService {
 		console.log(this.userId);
 		bid.userId = this.userId;
 		this.bids.push(bid);
-		this.router.navigate(['bids/createbid']);
+		this.router.navigate(['bids/allbids']);
 		// this.bids.remove(key)
 		// 	.catch(error => this.handleError(error))
 	}
