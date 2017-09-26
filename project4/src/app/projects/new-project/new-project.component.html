@@ -7,9 +7,9 @@
 				<button class="btn btn-success" type="submit" (click)="createEquipmentInput();$event.preventDefault()">Add Equipment Expense</button>
 				
 				<div class="form-group">
-					<label for="newBidName"> New Project Name</label>
+					<label for="newProjectName"> New Project Name</label>
 					<input 
-						name="newBidName"
+						name="newProjectName"
 						
 						[(ngModel)]="newProject.newProjectName"
 						class="form-control"
@@ -19,11 +19,11 @@
 				<div class="form-group">
 					<label for="location"> New Project Location</label>
 					<input 
-						name="newBidLocation"
+						name="newProjectLocation"
 						
-						[(ngModel)]="newBid.newProjectLocation"
+						[(ngModel)]="newProject.newProjectLocation"
 						class="form-control"
-						placeholder="Bid Location"
+						placeholder="Project Location"
 					/>
 				</div>
 				<button class="btn btn-primary btn-lg btn-block" type="submit">Create Project</button>

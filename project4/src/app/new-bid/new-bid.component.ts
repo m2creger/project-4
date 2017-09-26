@@ -42,50 +42,29 @@ export class NewBidComponent implements OnInit {
     private viewContainerRef: ViewContainerRef,
     private materialService: MaterialService
    ) { 
+    
   }
-
 
   ngOnInit() {
   }
 
   createNewProject(newBid) {
-  	var newBidName = newBid.newBidName;
-  	var newBidLocation = newBid.newBidLocation;
+  	var newBidName = newBid.projectName;
+  	var newBidLocation = newBid.projectLocation;
   	console.log(newBidName);
   	console.log(newBidLocation);
 
-    // Add materials to bid
-    var materialsToBid = this.materialService.getMaterials();
-    console.log(materialsToBid);
-
-    // Add labor to bid
-    var laborToBid = this.laborService.getLabor()
-    console.log(laborToBid);
     this.newBid = {
-      newBidName: newBidName,
-      newBidLocation: newBidLocation,
-      materials: materialsToBid,
-      labor: laborToBid
+      projectName: newBidName,
+      projectLocation: newBidLocation
     }
     console.log('creating new bid');
     console.log(newBid);
     this.bidService.createBid(newBid);
   }
 
-  createMaterialInput() {
-    let bidMaterialComponent = this.componentFactoryResolver.resolveComponentFactory(BidMaterialComponent);
-    this.componentRef = this.target.createComponent(bidMaterialComponent);
-  }
-
-  createEquipmentInput() {
-    let bidEquipmentComponent = this.componentFactoryResolver.resolveComponentFactory(BidEquipmentComponent);
-    this.componentRef = this.target.createComponent(bidEquipmentComponent);
-
-  }
-
-  createLaborInput() {
-    let bidLaborComponent = this.componentFactoryResolver.resolveComponentFactory(BidLaborComponent);
-    this.componentRef = this.target.createComponent(bidLaborComponent);
+  close() {
+    this.router.navigate(['bids']);
   }
 
 }

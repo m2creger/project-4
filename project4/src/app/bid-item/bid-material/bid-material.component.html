@@ -6,11 +6,14 @@
 </div>
 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
 	<div class="input-group">
+		<span class="input-group-addon">Quantity:</span>
+	    <input type="text" class="form-control" #quantityInput>
 		<span class="input-group-addon">$</span>
 	    <input type="text" class="form-control" #costInput>
 	    <span class="input-group-btn">
-        <button class="btn btn-secondary" type="button" (click)="addMaterialToBid()">Add</button>
+        <button class="btn btn-secondary" (click)="addMaterialToBid()">Add</button>
       </span>
 	</div>
 </div>
 <hr>
+<flash-messages></flash-messages>

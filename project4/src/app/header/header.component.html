@@ -16,13 +16,13 @@
         <ng-template [ngIf]="authService.isAuthenticated()">
           <li routerLinkActive="active"><a routerLink="/home">Home</a>
           </li>
-      		  <li>
+      		<li>
       			 <a routerLink="/bids">Bids
               </a>
-      		  </li>
-      		  <li>
+      		</li>
+      		<li>
       			 <a routerLink="/projects">Projects</a>
-      		  </li>
+      		</li>
         </ng-template>
       </ul>
       <form class="navbar-form navbar-right" role="search" (ngSubmit)="searchForTerm(form)" #form="ngForm">

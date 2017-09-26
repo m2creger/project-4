@@ -6,29 +6,26 @@
 <ng-template>
 </ng-template>
 -->
-
-<div class="row">
+<div class="container bidIndexContainer">
+	<div class="row">
 	<div class="col-xs-12">
 		<a *ngFor="let bid of bids | async"
-		  class="list-group-item clearfix" (click)="editBid()">
+		  class="list-group-item clearfix" (click)="bidDetail(bid.$key)">
 		  <div class="pull-left" >
-		    <h4 class="list-group-item-heading">{{bid.newBidName}}</h4>
-		    <p class="list-group-item-text">{{bid.newBidLocation}}</p>
+		    <h4 class="list-group-item-heading">{{bid.projectName}}</h4>
+		    <p class="list-group-item-text">{{bid.projectLocation}}</p>
 		
 		    <button class="edit btn-primary"
-	      	(click)="editBid(bid.$key); $event.stopPropagation()">Edit</button>
+	      	(click)="editBid(bid.$key); $event.stopPropagation()">Add items to bid</button>
+	      	<button class="edit btn-primary"
+	      	(click)="bidDetail(bid.$key); $event.stopPropagation()">Bid Details</button>
 	      	<button class="delete btn-danger"
 	      	(click)="deleteBid(bid.$key); $event.stopPropagation()">Delete</button>
+	      	<button class="delete btn-danger"
+	      	(click)="convertToProject(bid.$key); $event.stopPropagation()">Convert To Project</button>
 	  		</div>	 
 		</a>
-		<!--
-		<app-bid-item *ngFor="let bid of fakeBids; let i = index"
-		[bid]="bid"
-		[index]="i">
-		</app-bid-item>
-		
-		{{ (bid | async)?.BidName}}
-		-->
+	</div>
 	</div>
 </div>
 

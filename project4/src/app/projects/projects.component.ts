@@ -9,17 +9,11 @@ import { ProjectService } from '../projects.service';
 })
 
 export class ProjectsComponent implements OnInit {
-  routeLinks: any[];
-  activeLinkIndex = 0;
+ 
   constructor(
   	private router: Router,
   	private projectService: ProjectService
-  ) { 
-
-  	this.routeLinks = [
-  		{ label: 'New Project', link: 'newproject'},
-  		{ label: 'All Projects', link: 'allprojects'}
-  	]
+  ) {
   }
 
   ngOnInit() {

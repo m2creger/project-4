@@ -1,10 +1,18 @@
-<nav md-tab-nav-bar>
-  <a md-tab-link
-  *ngFor="let routeLink of routeLinks; let i = index"
-     [routerLink]="routeLink.link"
-     [active]="activeLinkIndex === i"
-     (click)="activeLinkIndex = i">
-     {{routeLink.label}}
-  </a>
-</nav>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" id="newproject">
+			<a routerLink="newproject" class="text-center justify-content-center">
+				<h1 class="linkText"> New Project </h1>
+				<h3 class="linkText">Start here to create a new project</h3>
+			</a>
+		</div>
+		<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" id="allprojects">
+			<a routerLink="allprojects" class="text-center justify-content-center">
+				<h1 class="linkText"> All Projects</h1>
+				<h3 class="linkText">Click here to see projects</h3>
+			</a>
+		</div>
+	</div>
+</div>
 <router-outlet></router-outlet>
+

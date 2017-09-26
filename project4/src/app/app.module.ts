@@ -7,9 +7,10 @@ import { CommonModule } from '@angular/common';
 import { Observable } from 'rxjs';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MdButtonModule, MdTabsModule } from '@angular/material';
 import { ModalModule } from 'ng2-modal';
 import { PopoverModule } from 'ng2-popover';
+import { FlashMessagesModule } from 'angular2-flash-messages';
+
 //import { MDBBootstrapModule } from 'angular-bootstrap-md';
 
 //import { AngularFireDatabaseModule } from 'angularfire2/database';
@@ -55,6 +56,10 @@ import { DynamicBidComponent } from './dynamic-bid.component';
 import { NewProjectComponent } from './projects/new-project/new-project.component';
 import { ProjectEditComponent } from './projects/project-edit/project-edit.component';
 import { ProjectIndexComponent } from './projects/project-index/project-index.component';
+import { BidDetailComponent } from './bid-detail/bid-detail.component';
+import { ProjectDetailComponent } from './projects/project-detail/project-detail.component';
+import { WorkersComponent } from './workers/workers.component';
+import { EquipmentComponent } from './equipment/equipment.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -76,7 +81,11 @@ import { ProjectIndexComponent } from './projects/project-index/project-index.co
     BidEquipmentComponent,
     NewProjectComponent,
     ProjectEditComponent,
-    ProjectIndexComponent
+    ProjectIndexComponent,
+    BidDetailComponent,
+    ProjectDetailComponent,
+    WorkersComponent,
+    EquipmentComponent
 
   ],
   imports: [
@@ -89,15 +98,14 @@ import { ProjectIndexComponent } from './projects/project-index/project-index.co
     ReactiveFormsModule,
     BidsRoutingModule,
     BrowserAnimationsModule,
-    MdButtonModule, 
-    MdTabsModule,
     ModalModule,
     PopoverModule,
     //AngularFireDatabaseModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFireDatabaseModule,
-    ProjectRoutingModule
+    ProjectRoutingModule,
+    FlashMessagesModule,
     //MDBBootstrapModule,
 
   ],

@@ -1,0 +1,49 @@
+<div class="container bidDetailContainer">
+	<div class="row">
+		<div class="col-xs-12 bidDetailArea">
+			
+			
+			<ul class="list-group">
+
+				<h1>{{detailedBid.newBidName}}</h1>
+				<h2>{{detailedBid.newBidLocation}}</h2>
+				<hr>
+				<h2>Materials</h2>
+				<!-- -->
+				<li *ngIf="materials.length === 0; else elseBlock"><h5>No materials added to bid</h5>
+				</li>
+				<ng-template #elseBlock>
+				<li class="list-group-item" *ngFor="let material of materials | async">
+					<h5>Material Type:{{material.materialType}}--(${{material.materialCost }})</h5>
+					<button class="delete btn-danger"
+	      			(click)="deleteMaterial(material.$key); $event.stopPropagation()">Delete</button>
+				
+				</li>
+				</ng-template>
+			</ul>
+				<hr>
+				<h2>Equipment</h2>
+			<ul class="list-group">
+				<li class="list-group-item" *ngFor="let equipmentBid of equipment | async">
+					<h5>Equipment Type:{{equipmentBid.equipmentType}}--Amount of Hours:{{equipmentBid.equipmentHours}}--Rate per hour({{equipmentBid.equipmentCost}})</h5>
+					<button class="delete btn-danger"
+	      			(click)="deleteEquipment(equipmentBid.$key); $event.stopPropagation()">Delete</button>
+				</li>
+				
+			</ul>
+			<hr>
+				<h2>Labor</h2>
+			<ul class="list-group">
+				<li class="list-group-item" *ngFor="let laborBid of labor | async">
+					
+					<h5>Labor Type:{{laborBid.laborType}}--Amount of Hours:{{laborBid.laborHours}}--Cost per hour:({{laborBid.laborRate}})</h5>
+					<button class="delete btn-danger"
+	      			(click)="deleteLabor(laborBid.$key); $event.stopPropagation()">Delete</button>
+				</li>
+				
+				
+			</ul>
+			
+		</div>
+	</div>
+</div>

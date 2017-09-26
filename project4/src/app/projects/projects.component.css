@@ -1,0 +1,18 @@
+#newproject {
+	height: 300px;
+	background-image: url("/assets/images/excavators-construction-site-build-162515.jpeg");
+	background-size: cover;
+	border-radius: 20px;
+}
+
+#allprojects {
+	height: 300px;
+	background-image: url("/assets/images/pexels-photo-585419.jpeg");
+	background-size: cover;
+	border-radius: 20px;
+}
+
+.linkText {
+	color: white;
+}
+

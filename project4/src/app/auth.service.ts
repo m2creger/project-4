@@ -50,14 +50,12 @@ export class AuthService {
 		this.afAuth.auth.createUserWithEmailAndPassword(email, password)
 			.then(response => {
 
-				this.newUser = response.email;
-				console.log("The new user is " + this.newUser)
 				
+				console.log("The new user is " + this.newUser)
+				this.newUser = { email: email, password: password }
 				this.userIsAuthenticated = true;		
 				// Make sure user is authenticated
-				firebase.auth().currentUser.getToken()
-					.then(
-						(token: string) => this.token = token)
+				this.createUser(this.newUser)
 				// Store user to database
 			
 				// Then route to home page

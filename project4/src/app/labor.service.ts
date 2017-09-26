@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
 import { LaborBid } from './labor.model';
 
+
 @Injectable()
 
 export class LaborService {
@@ -9,7 +10,7 @@ export class LaborService {
 	laborChanged = new Subject<LaborBid[]>();
 	allLabor: LaborBid[] = []
 
-	addLabor(labor: LaborBid) {
+	addLabor(labor: LaborBid, key: string) {
 		this.allLabor.push(labor);
 		console.log(this.allLabor);
 		this.laborChanged.next(this.allLabor.slice());

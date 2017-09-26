@@ -1,3 +1,18 @@
-<p>
-  bid-equipment works!
-</p>
+<hr>
+<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+	<div class="input-group">
+	    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Equipment" #equipmentTypeInput>
+	</div>
+</div>
+<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+	<div class="input-group">
+		<input type="text" class="form-control" #equipmentHourInput placeholder="Quantity of hours">
+		<span class="input-group-addon">$</span>
+	    <input type="text" class="form-control" #equipmentCostInput>
+	    <span class="input-group-btn">
+        <button class="btn btn-secondary" type="button" (click)="addEquipmentToBid()">Add</button>
+      </span>
+	</div>
+</div>
+<hr>
+<flash-messages></flash-messages>

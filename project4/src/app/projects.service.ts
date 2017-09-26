@@ -28,8 +28,9 @@ export class ProjectService {
 		})
 	}
 
-	createProject(project: Project): void {
+	createProject(project): void {
 		console.log("creating project");
+		console.log(project);
 		project.userId = this.userId;
 		this.projects.push(project);
 		this.router.navigate(['projects/allprojects']);
@@ -38,7 +39,7 @@ export class ProjectService {
 	getProjectsList(): FirebaseListObservable<Project[]> {
 		if(!this.userId) return;
 
-		this.projects = this.db.list(`bids/${this.userId}`);
+		this.projects = this.db.list(`projects/${this.userId}`);
 		return this.projects;
 	}
 

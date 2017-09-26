@@ -8,6 +8,8 @@ import { ProjectsComponent } from './projects/projects.component';
 import { BidsComponent } from './bids/bids.component';
 import { NewBidComponent } from './new-bid/new-bid.component';
 import { BidIndexComponent } from './bid-index/bid-index.component';
+import { WorkersComponent } from './workers/workers.component';
+import { EquipmentComponent } from './equipment/equipment.component';
 
 const routes: Routes = [
 	{
@@ -29,6 +31,14 @@ const routes: Routes = [
 	{
 		path: 'projects',
 		component: ProjectsComponent
+	},
+	{
+		path: 'workers',
+		component: WorkersComponent
+	},
+	{
+		path: 'equipment',
+		component: EquipmentComponent
 	}
 	
 ];

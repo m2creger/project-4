@@ -12,7 +12,7 @@ export class NewProjectComponent implements OnInit {
   
   @Input() value: string;
 
-
+  newProject = <any>{}
   componentData = null;
   subscription: Subscription;
 

@@ -7,20 +7,25 @@ import { BidService } from '../bids.service';
   styleUrls: ['./bids.component.css']
 })
 export class BidsComponent implements OnInit {
-  routeLinks: any[];
-  activeLinkIndex = 0;
+
+
   constructor(
     private router: Router,
     private bidService: BidService
   ) {
-  	this.routeLinks = [
-  		{label: 'New Bid', link: 'newbid'},
-  		{label: 'All Bids', link: 'allbids'}
-  	];
+  
   }
 
   ngOnInit() {
-    //this.bidService.getBids();
+
+  }
+
+  showAllBids() {
+    this.router.navigate(['allbids']);
+  }
+
+  newBid() {
+    this.router.navigate(['newbid']);
   }
 
 }

@@ -3,6 +3,8 @@
 	height: 300px;
 	background-size: 100%;
 	background-repeat: no-repeat;
+	border-radius: 10px;
+	box-shadow: 10px 5px 5px black;
 
 }
 
@@ -11,12 +13,20 @@
 	height: 300px;
 	background-size: 100%;
 	background-repeat: no-repeat;
+	border-radius: 10px;
+	box-shadow: 10px 5px 5px black;
 
 
 }
 #mainSection {
 	background: linear-gradient(black, white);
+	border-radius: 5px;
 	
+}
+
+.bidView {
+	background-color: gray;
+	opacity: 0.5;
 }
 
 #bidLinkText {
@@ -25,4 +35,25 @@
 
 #projectLinkText {
 	color: white;
+}
+
+#bidButton {
+	position: absolute;
+	right: 0px;
+	bottom: 0px;
+	
+}
+
+#projectButton {
+	position: absolute;
+	right: 0px;
+	bottom: 0px;
+	opacity: 0.80;
+	height: 100px;
+	color: white;
+	font-size: 30px;
+}
+
+.well {
+	margin-top: 20px;
 }
