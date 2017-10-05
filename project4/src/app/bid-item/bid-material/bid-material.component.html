@@ -8,10 +8,12 @@
 	<div class="input-group">
 		<span class="input-group-addon">Quantity:</span>
 	    <input type="text" class="form-control" #quantityInput>
+	    <span class="input-group-addon">Unit of Measurement:</span>
+	    <input type="text" class="form-control" #unitOfMeasurement>
 		<span class="input-group-addon">$</span>
 	    <input type="text" class="form-control" #costInput>
 	    <span class="input-group-btn">
-        <button class="btn btn-secondary" (click)="addMaterialToBid()">Add</button>
+        <button [ngClass]="{selected: buttonSelected}" class="btn btn-secondary" (click)="addMaterialToBid()">Add</button>
       </span>
 	</div>
 </div>

@@ -1,25 +1,29 @@
 <div class="container">
 	<div class="row">
 	<div class="col-xs-12">
+		<button type="button" class="btn btn-outline-primary" (click)="close()">Close</button>
+		<hr>
+		<h2>Current Projects</h2>
+		<hr>
 		<a *ngFor="let project of projects | async"
 		  class="list-group-item clearfix" (click)="projectDetail(project.$key)">
 		  <div class="pull-left" >
 		    <h4 class="list-group-item-heading">{{project.projectName}}</h4>
 		    <p class="list-group-item-text">{{project.projectLocation}}</p>
-		
-		    <button class="edit btn-primary"
-	      	(click)="showBidPackage(project.$key); $event.stopPropagation()">Show Bid Package</button>
-	      	<button class="edit btn-primary"
-	      	(click)="materialsUsed(project.$key); $event.stopPropagation()">Materials Used</button>
-	      	<button class="edit btn-primary"
-	      	(click)="laborUsed(project.$key); $event.stopPropagation()">Labor costs</button>
-	      	<button class="edit btn-primary"
-	      	(click)="equipmentUsed(project.$key); $event.stopPropagation()">Equipment Costs</button>
-	      	<button class="edit btn-primary"
-	      	(click)="projectDetail(project.$key); $event.stopPropagation()">Bid Details</button>
-	      	<button class="delete btn-danger"
-	      	(click)="deleteProject(project.$key); $event.stopPropagation()">Delete</button>
-	
+		    	<div class="container">
+					<button class="edit btn-primary indexButton"
+			      	(click)="addProjectCost(project.$key); $event.stopPropagation()">Add Project Cost</button>
+			      	<button class="edit btn-primary indexButton"
+			      	(click)="projectDetail(project.$key); $event.stopPropagation()">Project Details</button>
+			      	<button class="edit btn-primary indexButton"
+			      	(click)="showBidPackage(project.$key); $event.stopPropagation()">Show Bid Package</button>
+			      	<button class="edit btn-primary indexButton"
+			      	(click)="addWorkersToProject(project.$key); $event.stopPropagation()">Add workers to project</button>
+			      	<button class="edit btn-primary indexButton"
+			      	(click)="addEquipmentToProject(project.$key); $event.stopPropagation()">Add equipment to project</button>
+			      	<button class="delete btn-danger indexButton"
+			      	(click)="deleteProject(project.$key); $event.stopPropagation()">Delete</button>
+				</div>
 	  		</div>	 
 		</a>
 	

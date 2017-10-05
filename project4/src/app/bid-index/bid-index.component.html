@@ -9,6 +9,8 @@
 <div class="container bidIndexContainer">
 	<div class="row">
 	<div class="col-xs-12">
+		<button type="button" class="btn btn-outline-primary" (click)="close()">Close</button>
+		<hr>
 		<a *ngFor="let bid of bids | async"
 		  class="list-group-item clearfix" (click)="bidDetail(bid.$key)">
 		  <div class="pull-left" >

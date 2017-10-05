@@ -53,11 +53,11 @@ export class LoginComponent implements OnInit {
   }
 
   onLogin(form: NgForm) {
-  	console.log("onLogin clicked");
+  
     const email = form.value.email;
-    console.log(email);
+   
     const password = form.value.password;
-    console.log(password);
+
     this.newUser = { email, password};
     this.authService.loginUser(email, password);
   

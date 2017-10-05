@@ -17,6 +17,7 @@ export class BidMaterialComponent implements OnInit {
   @ViewChild('materialInput') materialInputRef: ElementRef;
   @ViewChild('costInput') costInputRef: ElementRef;
   @ViewChild('quantityInput') quantityInputRef: ElementRef;
+  @ViewChild('unitOfMeasurement') measurementInputRef: ElementRef;
 
   materials: MaterialBid[];
   subscription: Subscription;
@@ -24,6 +25,7 @@ export class BidMaterialComponent implements OnInit {
   bid: FirebaseObjectObservable<any>;
   materialAdded = new EventEmitter<MaterialBid>();
   editingBid;
+  buttonClicked = false;
 
   constructor(
     private _flashMessagesService: FlashMessagesService,
@@ -36,17 +38,15 @@ export class BidMaterialComponent implements OnInit {
    
   }
 
-  retrieveBidData() {
-
-  }
-
   addMaterialToBid() {
   	const matType = this.materialInputRef.nativeElement.value;
     const matQty = this.quantityInputRef.nativeElement.value;
+    const matMeas = this.measurementInputRef.nativeElement.value;
   	const matCost = this.costInputRef.nativeElement.value;
-  	this.newMaterial = {materialType: matType, materialQuantity: matQty, materialCost: matCost};
+  	this.newMaterial = {materialType: matType, materialQuantity: matQty, materialMeasurement: matMeas, materialCost: matCost};
   	this.bidService.addMaterialToBid(this.newMaterial);
     this._flashMessagesService.show('Successfully Added!', { cssClass: 'alert-success', timeout: 1000 });
+    this.buttonClicked = true;
   }
 
 }

@@ -13,10 +13,17 @@ export class ProjectsComponent implements OnInit {
   constructor(
   	private router: Router,
   	private projectService: ProjectService
-  ) {
-  }
+  ) {}
 
   ngOnInit() {
+  }
+
+  showAllProjects() {
+    this.router.navigate(['allprojects']);
+  }
+
+  newProject() {
+    this.router.navigate(['newproject']);
   }
 
 }

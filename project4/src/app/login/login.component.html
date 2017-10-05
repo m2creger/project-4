@@ -14,8 +14,8 @@
 					<p class="loginCredentials"> *Password must be at least 6 characters</p>
 				</div>
 				<button class="btn btn-success" type="submit" [disabled]="!form.valid">Sign in</button>
-				<div class="alert-danger firebaseError text-justify" *ngIf="firebaseErrorMessage">
-					{{ firebaseErrorMessage }}
+				<div class="alert alert-danger firebaseError text-justify" *ngIf="firebaseErrorMessage">
+					<h5>{{ firebaseErrorMessage }}</h5>
 				</div>
 			</form>
 		</div>

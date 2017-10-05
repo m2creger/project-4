@@ -1,0 +1,11 @@
+#calendar {
+	background-color: white;
+}
+
+md-datepicker.md-THEME_NAME-theme {
+  background: magenta;
+}
+
+md-datepicker-content {
+	color: white;
+}

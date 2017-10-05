@@ -64,8 +64,10 @@ export class BidIndexComponent implements OnInit {
   }
 
   convertToProject(key) {
+    // Get the bid from bid service
     this.bidService.getBid(key)
       .subscribe(bid => this.bidToConvert = bid);
+      // Assign newProject
     this.newProject = this.bidToConvert;
     console.log(this.newProject);
     this.projectService.createProject(this.newProject);
@@ -73,6 +75,10 @@ export class BidIndexComponent implements OnInit {
     this.bidService.removeBid(key);
 
     // Add a notification letting user know bid was converted
+  }
+
+   close() {
+    this.router.navigate(['bids']);
   }
  
 

@@ -20,7 +20,7 @@ export class ProjectIndexComponent implements OnInit {
   projects: FirebaseListObservable<any>;
   project: FirebaseObjectObservable<any>;
   noProjectMessage = "No current projects";
-
+  bidPackage = <any>{};
 
   constructor(
   	private afAuth: AngularFireAuth,
@@ -41,28 +41,42 @@ export class ProjectIndexComponent implements OnInit {
   	this.projects = this.db.list(`projects/${this.userId}`)
   }
 
-  projectDetail(key) {
-
+  projectDetail(key: string) {
+    this.router.navigate(['projectdetail', key]);
   }
 
   showBidPackage(key) {
-
+    this.projectService.getBidPackageList(key)
+      .subscribe(
+         response => {
+           console.log("*****Getting bid package");
+           console.log(response);
+         }
+       )
   }
 
-  materialsUsed(key) {
-
+  materialsUsed(key: string) {
+    this.router.navigate(['projectmaterials', key]);
   }
 
-  laborUsed(key) {
-
+  laborUsed(key: string) {
+    this.router.navigate(['projectlabor', key]);
   }
 
-  equipmentUsed(key) {
-
+  equipmentUsed(key: string) {
+    this.router.navigate(['projectequipment', key])
   }
 
-  deleteProject(key) {
+  deleteProject(key: string) {
+    this.projects.remove(key);
+  }
 
+  addProjectCost(key: string) {
+    this.router.navigate(['addprojectcosts', key]);
+  }
+
+  close() {
+    this.router.navigate(['projects']);
   }
 
 }

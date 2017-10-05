@@ -42,4 +42,8 @@ export class NewProjectComponent implements OnInit {
     
   }
 
+  close() {
+    this.router.navigate(['projects']);
+  }
+
 }

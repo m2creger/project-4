@@ -1,13 +1,17 @@
 <div class="container" id="mainSection">
 	<div class="row">
 		<div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
-			<div class="well well-lg">
-					<h4>Jethro's Construction</h4>
-				    <p>Littleton, CO</p>
-				    <button class="edit btn-primary"
-		      		(click)="showWorkers(); $event.stopPropagation()">Workers</button>
-		      		<button class="edit btn-primary"
-		      		(click)="showEquipment(); $event.stopPropagation()">Equipment</button>
+			<div class="container-fluid">
+				<div class="well well-lg align-items-center">
+					<div class="container align-items-center">
+						<h4>Logged in as- {{userEmail}}</h4>
+					 
+					    <button class="edit btn-primary"
+			      		(click)="showWorkers(); $event.stopPropagation()">Workers</button>
+			      		<button class="edit btn-primary"
+			      		(click)="showEquipment(); $event.stopPropagation()">Equipment</button>
+			      	</div>
+				</div>
 			</div>
 		</div>
 	</div>

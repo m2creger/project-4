@@ -57,10 +57,11 @@ export class SignupComponent implements OnInit {
     console.log("the new user is " + newUser);
   	const email = newUser.email;
   	const password = newUser.password;
+    const companyName = newUser.companyName;
     console.log(email);
     console.log(password);
-    this.authService.signupUser(email, password);
-    this.authService.createUser(newUser);
+    this.authService.signupUser(email, password, companyName);
+   
  
   }
 

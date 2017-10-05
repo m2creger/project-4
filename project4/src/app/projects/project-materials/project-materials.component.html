@@ -1,0 +1,18 @@
+<hr>
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+	<div class="input-group">
+	    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Construction Material" #materialInput>
+	    <span class="input-group-addon">Quantity:</span>
+	    <input type="text" class="form-control" #quantityInput>
+	    <span class="input-group-addon">Unit of Measurement:</span>
+	    <input type="text" class="form-control" #unitOfMeasurement>
+		<span class="input-group-addon">$</span>
+	    <input type="text" class="form-control" #costInput>
+	    <span class="input-group-btn">
+        <button [ngClass]="{selected: buttonSelected}" class="btn btn-secondary" (click)="addMaterialToProject()">Add</button>
+      	</span>
+	</div>
+</div>
+
+<hr>
+<flash-messages></flash-messages>

@@ -22,6 +22,7 @@ export class AuthService {
 	baseUrl = 'http://localhost:3000';
 	// Token return by firebase
 	token: string;
+	firebaseUID;
 
 	// User id returned by firebase
 	userId: string;
@@ -38,7 +39,7 @@ export class AuthService {
 		private http: Http,
 		private router: Router,
 		public afAuth: AngularFireAuth,
-		db: AngularFireDatabase
+		public db: AngularFireDatabase
 		
 	) {
 		this.users = db.list('/users');
@@ -46,13 +47,14 @@ export class AuthService {
 
 
 	// Sign up new user with firebase
-	signupUser(email: string, password: string) {
+	signupUser(email: string, password: string, companyName: string) {
 		this.afAuth.auth.createUserWithEmailAndPassword(email, password)
 			.then(response => {
 
-				
-				console.log("The new user is " + this.newUser)
-				this.newUser = { email: email, password: password }
+		
+				this.userId = response.uid;
+	
+				this.newUser = { userId: this.userId, email: email, password: password, companyName: companyName }
 				this.userIsAuthenticated = true;		
 				// Make sure user is authenticated
 				this.createUser(this.newUser)
@@ -70,7 +72,7 @@ export class AuthService {
 	}
 
 	loginUser(email: string, password: string) {
-		console.log('logging in user');
+	
 
 		this.afAuth.auth.signInWithEmailAndPassword(email, password)
 			.then(
@@ -98,17 +100,6 @@ export class AuthService {
 
 	};
 
-	// getToken() {
-	// 	this.afAuth.auth.currentUser.getIdToken()
-	// 		.then(
-	// 			(token: string) => this.token = token
-	// 		);
-	// 		// need to call data service to get user info
-
-	// 		console.log("calling get token");
-			
-	// 		return this.token;
-	// }
 
 	returnFirebaseError(error: string) {
 		console.log("Firebase error");
@@ -130,6 +121,7 @@ export class AuthService {
 	createUser(user: User): void {
 		console.log("creating user");
 		console.log(user);
+	
 		this.users.push(user);
 	}
 

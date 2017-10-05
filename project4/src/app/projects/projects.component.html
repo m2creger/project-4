@@ -1,18 +1,25 @@
 <div class="container-fluid">
 	<div class="row">
-		<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" id="newproject">
-			<a routerLink="newproject" class="text-center justify-content-center">
-				<h1 class="linkText"> New Project </h1>
-				<h3 class="linkText">Start here to create a new project</h3>
-			</a>
+		<div class="col-xs-4 col-xs-offset-1 col-sm-4 col-sm-offset-1 col-md-4 col-md-offset-1 col-lg-4 col-lg-offset-1" id="newproject">
+			<div class="layer">
+				<div class="linkBox">
+					<a class="text-center justify-content-center" (click)="newProject()">
+						<h1 class="linkText"> New Project </h1>
+					</a>
+				</div>
+			</div>
 		</div>
-		<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" id="allprojects">
-			<a routerLink="allprojects" class="text-center justify-content-center">
-				<h1 class="linkText"> All Projects</h1>
-				<h3 class="linkText">Click here to see projects</h3>
-			</a>
+		<div class="col-xs-4 col-xs-offset-2 col-sm-4 col-sm-offset-2 col-md-4 col-md-offset-2 col-lg-4 col-lg-offset-2" id="allprojects">
+			<div class="layer">
+				<div class="linkBox">
+					<a class="text-center justify-content-center" (click)="showAllProjects()">
+						<h1 class="linkText"> All Projects</h1>
+
+					</a>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>
-<router-outlet></router-outlet>
+
 

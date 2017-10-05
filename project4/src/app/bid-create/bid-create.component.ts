@@ -1,7 +1,7 @@
 import { Component, Input, ComponentFactoryResolver, AfterViewInit, OnInit, Directive, ViewContainerRef, ViewChild, ComponentRef } from '@angular/core';
 import { NewBidComponent } from '../new-bid/new-bid.component';
 import { Subscription } from 'rxjs/Subscription';
-import {Observable} from 'rxjs/Observable';
+import { Observable } from 'rxjs/Observable';
 import { BidService } from '../bids.service';
 import { Bid } from '../bid.model';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -29,6 +29,9 @@ export class BidCreateComponent implements OnInit {
   @ViewChild('bidData', { read: ViewContainerRef}) target: ViewContainerRef;
   bids: FirebaseListObservable<any>;
   bid: FirebaseObjectObservable<any>;
+  bidMaterials: FirebaseListObservable<any>;
+  bidEquipment: FirebaseListObservable<any>;
+  bidLabor: FirebaseListObservable<any>;
   
   constructor(
   	private bidService: BidService,
@@ -48,6 +51,9 @@ export class BidCreateComponent implements OnInit {
     this.bidService.getBid(this.id)
       .subscribe(bid => this.newBid = bid)
     console.log(this.newBid);
+    this.bidMaterials = this.bidService.getBidMaterials(this.id);
+    this.bidLabor = this.bidService.getBidLabor(this.id);
+    this.bidEquipment = this.bidService.getBidEquipment(this.id);
   }
 
   createMaterialInput() {
@@ -67,7 +73,15 @@ export class BidCreateComponent implements OnInit {
   }
 
   createBid() {
-    this.router.navigate(['bids/showbid', this.id]);
+    this.router.navigate(['showbid', this.id]);
+  }
+
+  close() {
+    this.router.navigate(['bids']);
+  }
+
+  showBidDetail() {
+    this.router.navigate(['showbid', this.id]);
   }
 
 }

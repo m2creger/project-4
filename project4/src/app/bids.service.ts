@@ -8,7 +8,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import { Router } from '@angular/router';
 import { MaterialBid } from './material.model';
-import { EquipmentBid } from './equipment.model';
+import { EquipmentBid } from './equipment-bid.model';
 import { LaborBid } from './labor.model';
 
 @Injectable()
@@ -17,6 +17,7 @@ export class BidService {
 	bidsChanged = new Subject<Bid[]>();
 	private basePath: string = '/bids';
 	mappedBids: Observable<any[]>;
+	private bidMaterialCosts = new Subject<any>();
 	bids: FirebaseListObservable<any>;
 	bid: FirebaseObjectObservable<Bid>;
 
@@ -34,13 +35,17 @@ export class BidService {
 	showBidKey;
 	bidToUpdate;
 
+	
+	totalEquipmentCosts: number;
+	totalLaborCosts: number;
+
 	constructor(
 		private router: Router,
 		private db: AngularFireDatabase,
 		private afAuth: AngularFireAuth
 	) { 
 		this.afAuth.authState.subscribe(user => {
-			console.log(user);
+			
 			if (user) this.userId = user.uid;
 		})
 	}
@@ -55,7 +60,7 @@ export class BidService {
 		return this.bids;
 	}
 
-	getBid(key): FirebaseObjectObservable<Bid> {
+	getBid(key): FirebaseObjectObservable<any> {
 		this.updatingBidKey = key;
 		this.bid = this.db.object(`/bids/${this.userId}/${key}`);
 
@@ -75,7 +80,7 @@ export class BidService {
 			console.log(bid);
 			this.newBid.next(bid);
 		})
-		this.router.navigate(['bids/allbids']);
+		this.router.navigate(['allbids']);
 		// this.bids.remove(key)
 		// 	.catch(error => this.handleError(error))
 	}
@@ -113,7 +118,10 @@ export class BidService {
 
 	getBidMaterials(key) : FirebaseListObservable<MaterialBid[]>{
 		this.showBidKey = key;
-		this.bidMaterials = this.db.list(`/bids/${this.userId}/${this.showBidKey}/materials`);
+		this.bidMaterials = this.db.list(`/bids/${this.userId}/${this.showBidKey}/materials`)
+		
+		console.log(this.bidMaterials);
+
 		return this.bidMaterials;
 	}
 
@@ -151,12 +159,12 @@ export class BidService {
 			.catch(error => console.log("Error", error));
 	}
 
-	convertBidToProject(key) {
-		
+	getBidMaterialCosts(): Observable<any> {
+		return this.bidMaterialCosts.asObservable();
 	}
 
-	parseBid() {
-
+	clearBidMaterialCost() {
+		this.bidMaterialCosts.next(0);
 	}
 
 	

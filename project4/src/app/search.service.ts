@@ -59,7 +59,7 @@ export class SearchService {
 	}
 
 	wolframConfiguredSearchResults(): Observable<any> {
-		console.log('final search results');
+		
 		return this.wolframSearchResultsChanged.asObservable()
 	}
 

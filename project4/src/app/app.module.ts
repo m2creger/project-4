@@ -5,20 +5,16 @@ import { HttpModule } from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Observable } from 'rxjs';
-
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ModalModule } from 'ng2-modal';
 import { PopoverModule } from 'ng2-popover';
 import { FlashMessagesModule } from 'angular2-flash-messages';
 
-//import { MDBBootstrapModule } from 'angular-bootstrap-md';
-
-//import { AngularFireDatabaseModule } from 'angularfire2/database';
-
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
-
+// import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 // Services
 import { FirebaseService } from './firebase.service';
 import { AuthService } from './auth.service';
@@ -28,6 +24,8 @@ import { BidService } from './bids.service';
 import { MaterialService } from './material.service';
 import { LaborService } from './labor.service';
 import { ProjectService } from './projects.service';
+import { WorkerService } from './worker.service';
+import { EquipmentService } from './equipment.service';
 // Components
 import { AppRoutingModule } from './app-routing.module';
 import { BidsRoutingModule } from './bids/bids-routing.module';
@@ -53,6 +51,7 @@ import { BidLaborComponent } from './bid-item/bid-labor/bid-labor.component';
 import { BidMaterialComponent } from './bid-item/bid-material/bid-material.component';
 import { BidEquipmentComponent } from './bid-item/bid-equipment/bid-equipment.component';
 import { DynamicBidComponent } from './dynamic-bid.component';
+import { DynamicProjectComponent } from './dynamic-project.component';
 import { NewProjectComponent } from './projects/new-project/new-project.component';
 import { ProjectEditComponent } from './projects/project-edit/project-edit.component';
 import { ProjectIndexComponent } from './projects/project-index/project-index.component';
@@ -60,6 +59,12 @@ import { BidDetailComponent } from './bid-detail/bid-detail.component';
 import { ProjectDetailComponent } from './projects/project-detail/project-detail.component';
 import { WorkersComponent } from './workers/workers.component';
 import { EquipmentComponent } from './equipment/equipment.component';
+import { ProjectCostsComponent } from './projects/project-costs/project-costs.component';
+import { BidPackageComponent } from './projects/bid-package/bid-package.component';
+import { ProjectMaterialsComponent } from './projects/project-materials/project-materials.component';
+import { ProjectLaborComponent } from './projects/project-labor/project-labor.component';
+import { ProjectEquipmentComponent } from './projects/project-equipment/project-equipment.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -85,7 +90,12 @@ import { EquipmentComponent } from './equipment/equipment.component';
     BidDetailComponent,
     ProjectDetailComponent,
     WorkersComponent,
-    EquipmentComponent
+    EquipmentComponent,
+    ProjectCostsComponent,
+    BidPackageComponent,
+    ProjectMaterialsComponent,
+    ProjectLaborComponent,
+    ProjectEquipmentComponent
 
   ],
   imports: [
@@ -106,7 +116,7 @@ import { EquipmentComponent } from './equipment/equipment.component';
     AngularFireDatabaseModule,
     ProjectRoutingModule,
     FlashMessagesModule,
-    //MDBBootstrapModule,
+   
 
   ],
   schemas: [ NO_ERRORS_SCHEMA ],
@@ -118,9 +128,11 @@ import { EquipmentComponent } from './equipment/equipment.component';
     BidService,
     MaterialService,
     LaborService,
-    ProjectService
+    ProjectService,
+    WorkerService,
+    EquipmentService
   ],
   bootstrap: [AppComponent],
-  entryComponents: [BidMaterialComponent, BidEquipmentComponent, BidLaborComponent]
+  entryComponents: [BidMaterialComponent, BidEquipmentComponent, BidLaborComponent, ProjectMaterialsComponent, ProjectLaborComponent, ProjectEquipmentComponent]
 })
 export class AppModule { }
