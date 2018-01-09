@@ -3,12 +3,23 @@ import { Subscription } from 'rxjs/Subscription';
 import { ProjectService } from '../../projects.service';
 import { FirebaseListObservable, FirebaseObjectObservable, AngularFireDatabase } from 'angularfire2/database';
 import { FlashMessagesService } from 'angular2-flash-messages';
-
+import { trigger, state, style, transition, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-project-labor',
   templateUrl: './project-labor.component.html',
-  styleUrls: ['./project-labor.component.css']
+  styleUrls: ['./project-labor.component.css'],
+  animations: [
+    trigger('clickedState', [
+        state('default', style({
+          backgroundColor: 'gray'
+        })),
+        state('clicked', style ({
+          backgroundColor: 'green'
+        })),
+        transition('default => clicked', animate('200ms 500ms ease-in'))
+      ])
+  ]
 })
 export class ProjectLaborComponent implements OnInit {
 
@@ -20,7 +31,8 @@ export class ProjectLaborComponent implements OnInit {
   project: FirebaseObjectObservable<any>;
   subscription: Subscription;
   laborAdded = new EventEmitter<any>();
-
+  clickInfo = 'default';
+  
   constructor(
   	private _flashMessagesService: FlashMessagesService,
   	private injector: Injector,
@@ -38,7 +50,7 @@ export class ProjectLaborComponent implements OnInit {
   	this.newLabor = { laborType: laborType, laborRate: costType, laborHours: laborHours}
     this.projectService.addLaborCostToProject(this.newLabor);
     this._flashMessagesService.show('Successfully Added!', { cssClass: 'alert-success', timeout: 1000 });
-    
+    this.clickInfo = 'clicked';
   }
 
 }

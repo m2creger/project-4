@@ -35,8 +35,8 @@ export class EquipmentComponent implements OnInit {
     console.log(this.allEquipment);
   } 
 
-  deleteEquipment() {
-
+  deleteEquipment(key) {
+    this.equipmentService.deleteEquipment(key);
   }
 
   createNewEquipment(newEquipment) {

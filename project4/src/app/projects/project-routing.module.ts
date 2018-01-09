@@ -11,6 +11,11 @@ import { ProjectMaterialsComponent } from './project-materials/project-materials
 import { ProjectLaborComponent } from './project-labor/project-labor.component';
 import { ProjectEquipmentComponent } from './project-equipment/project-equipment.component';
 import { ProjectDetailComponent } from './project-detail/project-detail.component';
+import { ProjectSiteEquipmentComponent } from './project-site-equipment/project-site-equipment.component';
+import { ProjectWorkersComponent } from './project-workers/project-workers.component';
+import { AddWorkersComponent } from './add-workers/add-workers.component';
+import { AddEquipmentComponent } from './add-equipment/add-equipment.component';
+
 
 const projectRoutes: Routes = [
 	{
@@ -34,12 +39,29 @@ const projectRoutes: Routes = [
 		component: ProjectCostsComponent
 	},
 	{
-		path: 'bidpackage',
+		path: 'bidpackage/:id',
 		component: BidPackageComponent
 	},	
 	{
 		path: 'projectdetail/:id',
 		component: ProjectDetailComponent
+	},
+	{
+		path: 'projectworkers/:id',
+		component: ProjectWorkersComponent
+	},
+	{
+		path: 'projectsiteequipment/:id',
+		component: ProjectSiteEquipmentComponent
+	},
+	{
+		path: 'addworkers/:id',
+		component: AddWorkersComponent
+
+	},
+	{
+		path: 'addequipment',
+		component: AddEquipmentComponent
 	}
 ];
 

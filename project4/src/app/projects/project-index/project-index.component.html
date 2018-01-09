@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container projectIndexContainer">
 	<div class="row">
 	<div class="col-xs-12">
 		<button type="button" class="btn btn-outline-primary" (click)="close()">Close</button>
@@ -18,9 +18,8 @@
 			      	<button class="edit btn-primary indexButton"
 			      	(click)="showBidPackage(project.$key); $event.stopPropagation()">Show Bid Package</button>
 			      	<button class="edit btn-primary indexButton"
-			      	(click)="addWorkersToProject(project.$key); $event.stopPropagation()">Add workers to project</button>
-			      	<button class="edit btn-primary indexButton"
-			      	(click)="addEquipmentToProject(project.$key); $event.stopPropagation()">Add equipment to project</button>
+			      	(click)="showWorkers(project.$key); $event.stopPropagation()">Add workers to project</button>
+			      	
 			      	<button class="delete btn-danger indexButton"
 			      	(click)="deleteProject(project.$key); $event.stopPropagation()">Delete</button>
 				</div>

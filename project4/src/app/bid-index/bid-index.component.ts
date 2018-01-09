@@ -8,11 +8,13 @@ import { Bid } from '../bid.model';
 import { BidService } from '../bids.service';
 import { Subject } from 'rxjs/Subject';
 import { ProjectService } from '../projects.service';
+import { slideInOutAnimation } from '../_animations/index';
 
 @Component({
   selector: 'app-bid-index',
   templateUrl: './bid-index.component.html',
-  styleUrls: ['./bid-index.component.css']
+  styleUrls: ['./bid-index.component.css'],
+  animations: [slideInOutAnimation]
 })
 export class BidIndexComponent implements OnInit {
   //bids: Bid[];

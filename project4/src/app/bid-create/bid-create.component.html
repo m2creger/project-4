@@ -6,13 +6,15 @@
 			<ul class="list-group">
 				<li class="list-group-item">Bid Name: {{newBid.projectName}}--{{newBid.projectLocation}}</li>
 			</ul>
-			<form>
+			<div class="container text-center">
+			
 				<div class="form-group">
 				<button class="btn btn-success" type="submit" (click)="createLaborInput(); $event.preventDefault()">Add Labor Hours</button>
 				<button class="btn btn-success" type="submit" (click)="createMaterialInput(); $event.preventDefault()">Add Material</button>
 				<button class="btn btn-success" type="submit" (click)="createEquipmentInput(); $event.preventDefault()">Add Equipment Expense</button>
 				</div>
-			</form>
+			
+			</div>
 			<button class="btn btn-primary btn-lg btn-block" type="submit" (click)="showBidDetail()">Bid Detail</button>
 			<button class="btn btn-primary btn-lg btn-block" type="submit" (click)="createBid()">Finished</button>
 		</div>

@@ -16,6 +16,8 @@ export class WorkerService {
 
 	userId: string;
 	updatingWorker;
+	jobSite;
+	jobSiteWorkers;
 
 	constructor(
 		private router: Router,
@@ -33,7 +35,15 @@ export class WorkerService {
 
 		this.workers = this.db.list(`workers/${this.userId}`);
 	
-		return this.workers
+		return this.workers;
+	}
+
+	getWorker(key): FirebaseObjectObservable<any> {
+		if (!this.userId) return;
+
+		this.worker = this.db.object(`workers/${this.userId}/${key}`);
+		return this.worker;
+
 	}
 
 	createWorker(worker: Worker): void {
@@ -46,6 +56,23 @@ export class WorkerService {
 
 	removeWorker(key: string) {
 		this.workers.remove(key)
+			.then(response => console.log('success'))
+			.catch(error => console.log("Error", error));
+	}
+
+	addWorkerToJobSite(key: string, worker: Worker) {
+		this.jobSite = key;
+		console.log(worker);
+		console.log(key);
+		this.jobSiteWorkers = this.db.list(`projects/${this.userId}/${this.jobSite}/workers`);
+		console.log(this.jobSiteWorkers);
+		this.jobSiteWorkers.push(worker);
+	}
+
+	removeWorkerFromJobSite(jobSiteKey: string, workerKey: string ) {
+		this.jobSite = jobSiteKey;
+		this.jobSiteWorkers = this.db.list(`projects/${this.userId}/${this.jobSite}/workers`);
+		this.jobSiteWorkers.remove(workerKey)
 			.then(response => console.log('success'))
 			.catch(error => console.log("Error", error));
 	}

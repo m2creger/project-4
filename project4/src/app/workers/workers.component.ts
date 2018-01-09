@@ -60,5 +60,9 @@ export class WorkersComponent implements OnInit {
     this.router.navigate(['home']);
   }
 
+  deleteWorker(key) {
+    this.workerService.removeWorker(key);
+  }
+
 
 }

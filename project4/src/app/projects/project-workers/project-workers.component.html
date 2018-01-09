@@ -1,0 +1,26 @@
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12 col-md-12 col-lg-12 col-sm-12">
+			<button type="button" class="btn btn-outline-primary" (click)="close()">Close</button>
+			<hr>
+			<h3>Current Workers on Site</h3>
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-12 col-md-12 col-lg-12 col-sm-12">
+					<button type="button" class="btn btn-secondary" (click)="addWorkers()">Add workers to job</button>
+
+					</div>
+				</div>
+			</div>
+			<hr>
+			<ul class="list-group">
+				<li class="list-group-item" *ngFor="let worker of siteWorkers | async">
+					<h4>Worker Name: {{worker.workerName}}</h4>
+					<h4>Job Title: {{worker.workerJobTitle}}</h4>
+					<button class="delete btn-danger"
+		      			(click)="deleteWorker(worker.$key); $event.stopPropagation()">Remove Worker</button>	
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>

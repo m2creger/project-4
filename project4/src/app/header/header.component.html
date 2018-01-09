@@ -4,32 +4,49 @@
       <a href="#" class="navbar-brand" id="title">Forge</a>
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
 
-      	<span class="icon-bar"></span>
-      	<span class="icon-bar"></span>
-      	<span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
 
-    	</button>
+      </button>
     </div>
 
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
+
         <ng-template [ngIf]="authService.isAuthenticated()">
-          <li routerLinkActive="active"><a routerLink="/home">Home</a>
+          <li class="nav-item active" routerLinkActive="active"><a class="nav-link" routerLink="/home">Home</a>
           </li>
-      		<li>
-      			 <a routerLink="/bids">Bids
+      		<li class="nav-item">
+      			 <a class="nav-link" routerLink="/bids">Bids
               </a>
       		</li>
-      		<li>
-      			 <a routerLink="/projects">Projects</a>
+      		<li class="nav-item">
+      			 <a class="nav-link" routerLink="/projects">Projects</a>
       		</li>
         </ng-template>
       </ul>
       <form class="navbar-form navbar-right" role="search" (ngSubmit)="searchForTerm(form)" #form="ngForm">
+        <!-- <div>
+          <popover-content class="searchPopover" #myPopover
+            title=""
+            placement="bottom" 
+            [animation]="true"                          
+            [closeOnClickOutside]="true">
+           
+              
+                <ng-container *ngFor="let searchResult of searchResultsArray; let i = index">
+                  <div style="height: 200px; width: 200px">
+                    <img [src]="searchResult.src" class="rounded"/>
+                  </div>
+                </ng-container>
+          </popover-content>
+        </div>
         <div class="form-group">
           <input type="text" ngModel class="form-control" placeholder="Got a question?" name="searchTerm">
-        </div>
-        <button type="submit" class="btn btn-default" [popover]="myPopover">Submit</button>
+        </div> -->
+
+        <!-- <button type="submit" class="btn btn-default" [popover]="myPopover">Submit</button> -->
       </form>
       <ul class="nav navbar-nav navbar-right">
         <ng-template [ngIf]="!authService.isAuthenticated()">
@@ -44,47 +61,5 @@
 </nav>
 
 
-<popover-content #myPopover
-  title=""
-  placement="auto left" 
-  [animation]="true"                          
-  [closeOnClickOutside]="true">
-  <div class="container">
-    <div class="row">
-      <ng-container *ngFor="let searchResult of searchResultsArray; let i = index">
-        <div>
-          <img [src]="searchResult.src" class="rounded float-left"/>
-        </div>
-      </ng-container>
-    </div>
-  </div>
-</popover-content>
 
 
-<!--
-<modal  title="Modal title"
-        cancelButtonLabel="cancel"
-        submitButtonLabel="submit"
-        modalClass="modal-lg modal-sm any-other-css-class"
-        [hideCloseButton]="true|false"
-        [closeOnEscape]="true|false"
-        [closeOnOutsideClick]="true|false"
-        (onOpen)="actionOnOpen()"
-        (onClose)="actionOnClose()"
-        (onSubmit)="actionOnSubmit()">
- 
-    <modal-header>
-        Modal header content goes there.
-    </modal-header>
- 
-    <modal-content>
-        Modal body content goes there.
-    </modal-content>
- 
-    <modal-footer>
-        Modal footer content goes there.
-    </modal-footer>
-        
-</modal>
-
--->

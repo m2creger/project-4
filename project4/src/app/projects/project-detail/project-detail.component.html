@@ -6,15 +6,15 @@
 			<hr>
 			<ul class="list-group">
 
-				<h1>{{project?.projectName}} -- Total Costs ${{totalCosts}}</h1>
+				<h1>{{project?.projectName}} -- Total Costs ${{totalCosts | number: '.2'}}</h1>
 				<h2>{{project?.projectLocation}}</h2>
 				<hr>
 			
 				<li class="list-group-item">
-						<h2>Materials -- ${{ materialCosts}}</h2>
+						<h2>Materials -- ${{ materialCosts | number: '.2'}}</h2>
 				</li>
 				<li class="list-group-item" *ngFor="let material of materials | async ">
-					<h5>Material Type: <span style="color: blue">{{material.materialType}}</span>--Quantity: <span style="color: red">({{material.materialQuantity}})</span>--Unit of Measurement<span style="color: blue">({{material.materialMeasurement}})</span>-- Cost: $<span style="color: green">({{material.materialCost }})</span></h5>
+					<h5>Material Type: <span style="color: blue">{{material.materialType}}</span>--Quantity: <span style="color: red">({{material.materialQuantity}})</span>--Unit of Measurement<span style="color: blue">({{material.materialMeasurement}})</span>-- Cost: $<span style="color: green">({{material.materialCost | number: '.2' }})</span></h5>
 					<button class="delete btn-danger"
 	      			(click)="deleteMaterial(material.$key); $event.stopPropagation()">Delete</button>
 				
@@ -23,10 +23,10 @@
 				<hr>
 			<ul class="list-group">
 				<li class="list-group-item">
-						<h2>Equipment Costs -- ${{ equipmentCosts}}</h2>
+						<h2>Equipment Costs -- ${{ equipmentCosts | number: '.2'}}</h2>
 				</li>
 				<li class="list-group-item" *ngFor="let projectEquipment of equipment | async">
-					<h5>Equipment Type: <span style="color: blue">{{projectEquipment.equipmentType}}</span>-- Amount of Hours: <span style="color: red">{{projectEquipment.equipmentHours}}</span>-- Rate per hour: ($<span style="color: green">{{projectEquipment.equipmentCost}})</span></h5>
+					<h5>Equipment Type: <span style="color: blue">{{projectEquipment.equipmentType}}</span>-- Amount of Hours: <span style="color: red">{{projectEquipment.equipmentHours}}</span>-- Rate per hour: ($<span style="color: green">{{projectEquipment.equipmentCost | number: '.2'}})</span></h5>
 					<button class="delete btn-danger"
 	      			(click)="deleteEquipment(projectEquipment.$key); $event.stopPropagation()">Delete</button>
 				</li>
@@ -36,11 +36,11 @@
 	
 			<ul class="list-group">
 				<li class="list-group-item">
-						<h2>Labor Costs -- ${{ laborCosts}}</h2>
+						<h2>Labor Costs -- ${{ laborCosts | number: '.2'}}</h2>
 				</li>
 				<li class="list-group-item" *ngFor="let projectLabor of labor | async">
 					
-					<h5>Labor Type: <span style="color: blue">{{projectLabor.laborType}}</span> -- Amount of Hours: <span style="color: green">{{projectLabor.laborHours}} </span>--Cost per hour: ($<span style="color: red">{{projectLabor.laborRate}}</span>)</h5>
+					<h5>Labor Type: <span style="color: blue">{{projectLabor.laborType}}</span> -- Amount of Hours: <span style="color: green">{{projectLabor.laborHours}} </span>--Cost per hour: ($<span style="color: red">{{projectLabor.laborRate | number: '.2'}}</span>)</h5>
 					<button class="delete btn-danger"
 	      			(click)="deleteLabor(projectLabor.$key); $event.stopPropagation()">Delete</button>
 				</li>

@@ -5,11 +5,22 @@ import { MaterialService } from '../../material.service';
 import { BidService } from '../../bids.service';
 import { FirebaseListObservable, FirebaseObjectObservable, AngularFireDatabase } from 'angularfire2/database';
 import { FlashMessagesService } from 'angular2-flash-messages';
-
+import { trigger, state, style, transition, animate } from '@angular/animations';
 @Component({
   selector: 'app-bid-material',
   templateUrl: './bid-material.component.html',
-  styleUrls: ['./bid-material.component.css']
+  styleUrls: ['./bid-material.component.css'],
+  animations: [
+    trigger('clickedState', [
+        state('default', style({
+          backgroundColor: 'gray'
+        })),
+        state('clicked', style ({
+          backgroundColor: 'green'
+        })),
+        transition('default => clicked', animate('200ms 500ms ease-in'))
+      ])
+  ]
 })
 
 export class BidMaterialComponent implements OnInit {
@@ -26,6 +37,7 @@ export class BidMaterialComponent implements OnInit {
   materialAdded = new EventEmitter<MaterialBid>();
   editingBid;
   buttonClicked = false;
+  clickInfo = 'default';
 
   constructor(
     private _flashMessagesService: FlashMessagesService,
@@ -46,7 +58,7 @@ export class BidMaterialComponent implements OnInit {
   	this.newMaterial = {materialType: matType, materialQuantity: matQty, materialMeasurement: matMeas, materialCost: matCost};
   	this.bidService.addMaterialToBid(this.newMaterial);
     this._flashMessagesService.show('Successfully Added!', { cssClass: 'alert-success', timeout: 1000 });
-    this.buttonClicked = true;
+    this.clickInfo = 'clicked';
   }
 
 }

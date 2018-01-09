@@ -46,25 +46,15 @@ export class ProjectIndexComponent implements OnInit {
   }
 
   showBidPackage(key) {
-    this.projectService.getBidPackageList(key)
-      .subscribe(
-         response => {
-           console.log("*****Getting bid package");
-           console.log(response);
-         }
-       )
+    this.router.navigate(['bidpackage', key]);
   }
 
-  materialsUsed(key: string) {
-    this.router.navigate(['projectmaterials', key]);
+  showWorkers(key) {
+    this.router.navigate(['projectworkers', key]);
   }
 
-  laborUsed(key: string) {
-    this.router.navigate(['projectlabor', key]);
-  }
-
-  equipmentUsed(key: string) {
-    this.router.navigate(['projectequipment', key])
+  showEquipment(key) {
+    this.router.navigate(['projectsiteequipment', key]);
   }
 
   deleteProject(key: string) {

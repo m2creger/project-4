@@ -64,6 +64,11 @@ import { BidPackageComponent } from './projects/bid-package/bid-package.componen
 import { ProjectMaterialsComponent } from './projects/project-materials/project-materials.component';
 import { ProjectLaborComponent } from './projects/project-labor/project-labor.component';
 import { ProjectEquipmentComponent } from './projects/project-equipment/project-equipment.component';
+import { ProjectWorkersComponent } from './projects/project-workers/project-workers.component';
+import { ProjectSiteEquipmentComponent } from './projects/project-site-equipment/project-site-equipment.component';
+import { AddWorkersComponent } from './projects/add-workers/add-workers.component';
+import { AddEquipmentComponent } from './projects/add-equipment/add-equipment.component';
+import { ClientDashboardComponent } from './client-dashboard/client-dashboard.component';
 
 @NgModule({
   declarations: [
@@ -95,7 +100,12 @@ import { ProjectEquipmentComponent } from './projects/project-equipment/project-
     BidPackageComponent,
     ProjectMaterialsComponent,
     ProjectLaborComponent,
-    ProjectEquipmentComponent
+    ProjectEquipmentComponent,
+    ProjectWorkersComponent,
+    ProjectSiteEquipmentComponent,
+    AddWorkersComponent,
+    AddEquipmentComponent,
+    ClientDashboardComponent
 
   ],
   imports: [

@@ -10,7 +10,8 @@
 		<span class="input-group-addon">$</span>
 	    <input type="text" class="form-control" #laborCostInput>
 	    <span class="input-group-btn">
-        <button class="btn btn-secondary" type="button" (click)="addLaborToBid()">Add</button>
+        <button class="btn btn-secondary" type="button" (click)="addLaborToBid()"
+        [@clickedState]="clickInfo">Add</button>
       </span>
 	</div>
 </div>

@@ -7,12 +7,14 @@ import * as firebase from 'firebase';
 import { ApiKeyService } from '../apikey.service';
 import { FirebaseService } from '../firebase.service';
 import { Subscription } from 'rxjs/Subscription';
-
+import { fadeInAnimation } from '../_animations/index';
 
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.css']
+  styleUrls: ['./signup.component.css'],
+  animations: [fadeInAnimation],
+  host: { '[@fadeInAnimation]': ''}
 })
 export class SignupComponent implements OnInit {
 

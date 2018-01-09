@@ -61,8 +61,9 @@ export class HomeComponent implements OnInit {
     console.log("*******getting user");
     console.log(this.userId);
     this.currentUser = this.db.list('/users',
-        ref => ref.orderByChild('userId').equalTo(this.userId)
+        //ref => ref.orderByChild('userId').equalTo(this.userId)
       );
+    console.log(this.currentUser);
   
   }
 
